@@ -1,0 +1,39 @@
+<h3>ng-class works!</h3>
+
+<div>
+  <table>
+    <tr>
+      <th>html</th>
+      <th>result html</th>
+    </tr>
+    <tr>
+      <td ngNonBindable>[ngClass]="'bg-tomato'"</td>
+      <td [ngClass]="'bg-tomato'">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngClass]="['bg-tomato', 'color-white']"</td>
+      <td [ngClass]="['bg-tomato', 'color-white']">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>
+        [ngClass]=" &#123; 'bg-tomato': true, 'color-white': false &#125;"
+      </td>
+      <td [ngClass]="{ 'bg-tomato': true, 'color-white': false }">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngClass]="true ? 'bg-tomato' : 'color-white'"</td>
+      <td [ngClass]="true ? 'bg-tomato' : 'color-white'">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngClass]="addClass()"</td>
+      <td [ngClass]="addClass()">
+        addClass() &#123; return &#123; 'bg-tomato': true, 'color-white': true
+        &#125; &#125;
+      </td>
+    </tr>
+  </table>
+</div>

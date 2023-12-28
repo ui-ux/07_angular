@@ -1,0 +1,22 @@
+<div>
+  <table>
+    <tr>
+      <th>html</th>
+      <th>result html</th>
+    </tr>
+    <tr>
+      <td ngNonBindable>{{ name }}</td>
+      <td>{{ name }}</td>
+    </tr>
+    <tr>
+      <td ngNonBindable>{{ person.name }}</td>
+      <td>{{ person.name }}</td>
+    </tr>
+    <tr>
+      <td ngNonBindable>[value]="person.name"</td>
+      <td>
+        <input type="text" [value]="person.name" />
+      </td>
+    </tr>
+  </table>
+</div>

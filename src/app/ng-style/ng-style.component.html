@@ -1,0 +1,41 @@
+<h3>ng-style works!</h3>
+
+<div>
+  <table>
+    <tr>
+      <th>html</th>
+      <th>result html</th>
+    </tr>
+    <tr>
+      <td ngNonBindable>[style.color]=[style.text-decoration]="'underline'"</td>
+      <td [style.text-decoration]="'underline'">text</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[style.color]="true ? 'blue' : 'green'"</td>
+      <td [style.color]="true ? 'blue' : 'green'">text</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngStyle]="titleStyle()"</td>
+      <td [ngStyle]="titleStyle()">
+        titleStyle() &#123; return &#123; color: 'red', fontSize: '16px' &#125;
+        &#125;;
+      </td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>
+        [ngStyle] = "&#123;color: 'green', fontSize: '20px'&#125;"
+      </td>
+      <td [ngStyle]="{ color: 'green', fontSize: '20px' }">text</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngStyle]="tdStyle"</td>
+      <td [ngStyle]="tdStyle">
+        public tdStyle = &#123; color: 'blue', fontSize: '26px' &#125;;
+      </td>
+    </tr>
+  </table>
+</div>

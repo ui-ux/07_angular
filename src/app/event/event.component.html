@@ -1,0 +1,19 @@
+<div>
+  <table>
+    <tr>
+      <td ngNonBindable>onClick()</td>
+      <td><button type="button" (click)="onClick()">click</button></td>
+    </tr>
+    <tr>
+      <td>onKeyUp(titleInput.value)</td>
+      <td>
+        <input
+          type="text"
+          [value]="person.name"
+          (keyup)="onKeyUp(titleInput.value)"
+          #titleInput
+        />
+      </td>
+    </tr>
+  </table>
+</div>

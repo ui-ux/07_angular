@@ -1,0 +1,8 @@
+<h2>output-parent works!</h2>
+<!-- <child-output-parent (click)="onChildClick()"></child-output-parent> -->
+<child-output-parent
+  (newItemEvent)="handleNewItem($event)"
+  [title]="'test string'"
+></child-output-parent>
+
+<p>{{ receivedItem }}</p>

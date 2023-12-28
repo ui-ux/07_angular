@@ -1,0 +1,22 @@
+<br />
+<h3>child-input-decorator works!</h3>
+<div>
+  <table>
+    <tr>
+      <th>hasTitle</th>
+      <th>html</th>
+      <th>result html</th>
+    </tr>
+    <tr>
+      <td>
+        [title]="testData1.name" <b>{{ hasTitle }}</b>
+      </td>
+      <td ngNonBindable>{{ title.name }}</td>
+      <td>
+        <div *ngIf="title">
+          {{ title.name }}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

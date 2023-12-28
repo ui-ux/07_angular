@@ -1,0 +1,100 @@
+<h3>switch works!</h3>
+<table>
+  <tr>
+    <th>html</th>
+    <th>result html</th>
+  </tr>
+  <tr>
+    <td>
+      count: number = 5;
+      <pre ngNonBindable>
+        @switch (count) {
+          @case(5) {
+            &lt;div&gt;
+              count: number = 5;
+            &lt;/div&gt;
+          }
+          @default {
+            &lt;div&gt;No count&lt;/div&gt;
+            }
+        }
+      </pre>
+    </td>
+    <td>
+      <div>
+        @switch (count) { @case(5) {
+        <div>count: number = 5;</div>
+        } @default {
+        <div>No count</div>
+        } }
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <pre ngNonBindable>
+        @switch (null) {
+          @case(5) {
+            &lt;div&gt;
+              count: number = 5;
+            &lt;/div&gt;
+          }
+          @default {
+            &lt;div&gt;No count &lt;/div&gt;
+            }
+        }
+      </pre>
+    </td>
+    <td>
+      <div>
+        @switch (null) { @case(5) {
+        <div>count: number = 5;</div>
+        } @default {
+        <div>No count</div>
+        } }
+      </div>
+    </td>
+  </tr>
+</table>
+
+<p>ngSwitch</p>
+<table>
+  <tr>
+    <td>
+      <pre ngNonBindable>
+        <b>count: number = 5;</b>
+        &lt;div&gt; [ngSwitch]="count"
+        &lt;ng-container&gt; ngSwitchCase="1">{{ count * 1 }}&lt;/ng-container&gt;<br>
+        &lt;ng-container&gt; ngSwitchCase="5">{{ count + 5 }}&lt;/ng-container&gt;<br>
+        &lt;ng-container&gt; ngSwitchDefault>{{ count * 1000 }}&lt;/ng-container&gt;<br>
+        &lt;/div&gt;
+      </pre>
+    </td>
+    <td>
+      <div [ngSwitch]="count">
+        <ng-container *ngSwitchCase="1">{{ count * 1 }}</ng-container>
+        <ng-container *ngSwitchCase="5">{{ count + 5 }}</ng-container>
+        <ng-container *ngSwitchDefault>{{ count * 1000 }}</ng-container>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <button
+        type="button"
+        *ngFor="let a of abc; let i = index"
+        (click)="onClickSwitch(a)"
+      >
+        {{ a }}
+      </button>
+    </td>
+    <td>
+      <div [ngSwitch]="current" style="background: cornflowerblue">
+        <ng-template ngSwitchCase="uno"> uno </ng-template>
+        <ng-template ngSwitchCase="dos"> dos </ng-template>
+        <ng-template ngSwitchCase="tress"> tress </ng-template>
+        <ng-template ngSwitchDefault>not found</ng-template>
+      </div>
+    </td>
+  </tr>
+</table>

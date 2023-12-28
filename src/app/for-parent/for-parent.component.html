@@ -1,0 +1,73 @@
+<p>for-parent works!</p>
+<br />
+<b
+  ><p ngNonBindable>@for (t of testData; track t.id ) { &lt;child-for/&gt;}</p>
+  <p>or</p>
+  <p ngNonBindable>@for (t of testData; track $index) { &lt;child-for/&gt;}</p>
+</b>
+<br />
+
+<p>
+  <!-- 'track t.id' is mandatory for '@for' -->
+  @for (t of testData; track t.id ) {
+  <child-for />
+  }
+
+  @empty {
+    <h2>
+      No Found...
+    </h2>
+   }
+</p>
+
+<br />
+<b>
+  <p ngNonBindable>
+    &lt;ng-container *ngFor="let t of testData; let index = index; let f = first;
+    let l = last; let e = even; let o = odd">
+    &lt;child-for/&gt;...
+  </p>
+</b>
+<br />
+
+<p>
+  <ng-container *ngFor="let t of testData; let i = index; let f = first;
+  let l = last; let e = even; let o = odd" >
+    <p>
+      <b>index</b> - {{ i }}
+    </p>
+    <p>
+      <b>first</b> - {{ f }}
+    </p>
+    <p>
+      <b>last</b> - {{ l }}
+    </p>
+    <p>
+      <b>even</b> - {{ e }}
+    </p>
+    <p>
+      <b>odd</b> - {{ o }}
+    </p>
+    <child-for></child-for>
+    <br/>
+  </ng-container>
+</p>
+
+<p ngNonBindable>
+ <b>&lt;child-for *ngFor="let t of testData"</b>
+</p>
+<p>
+  <child-for *ngFor="let t of testData;"></child-for>
+</p>
+
+<br />
+<b>
+  <p ngNonBindable>*ngIf="emptyData.length === 0"</p>
+</b>
+<br />
+
+<p>
+  <ng-container *ngIf="emptyData.length === 0">
+    <p>No Found...</p>
+  </ng-container>
+</p>

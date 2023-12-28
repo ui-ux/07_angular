@@ -1,0 +1,53 @@
+<h3>if-component works!</h3>
+<div>
+  <table>
+    <tr>
+      <th>html</th>
+      <th>result html</th>
+    </tr>
+    <tr>
+      <td ngNonBindable>
+        @if(testData.length) { &lt;b&gt;'it works'&lt;/b&gt; }<br />
+        @else if(testData.length === 3) {'else if' works}<br />
+        @else { 'it not works' }<br />
+      </td>
+      <td>
+        <div>testData.length = {{ testData.length === 3 }}</div>
+        @if(testData.length) { <b>'it works'</b> } @else if(testData.length ===
+        3) {'else if' works} @else { 'it not works' }
+      </td>
+    </tr>
+    <tr>
+      <td ngNonBindable>
+        &lt;div *ngIf="testData.length"&gt;'it works'&lt;/div&gt;
+      </td>
+      <td>
+        <div>testData.length = {{ testData.length === 3 }}</div>
+        <div *ngIf="testData.length">'it works'</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>
+        &lt;div *ngIf="methodIf()"&gt;'it works'&lt;/div&gt;
+      </td>
+      <td>
+        <div>methodIf() = {{ methodIf() }}</div>
+        <div *ngIf="methodIf()">'it works'</div>
+      </td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>
+        &lt;div *ngIf="!methodIf(); else nameTest"&gt;'it works'&lt;/div&gt;<br />
+        &lt;ng-template #nameTest&gt; ---else--- &lt;/ng-template&gt;
+      </td>
+      <td>
+        <div>methodIf() = {{ !methodIf() }}</div>
+        <div *ngIf="!methodIf(); else nameTest">'it works'</div>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<ng-template #nameTest> ---else--- </ng-template>
