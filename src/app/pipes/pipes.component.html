@@ -1,0 +1,279 @@
+<h3>pipes works!</h3>
+<table>
+  <tr>
+    <th>html</th>
+    <th>original</th>
+    <th>result</th>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ date }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date }}
+    </td>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ date | date }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date | date }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ date | date : "MM/dd/yy" }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date | date : "MM/dd/yy" }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ date | date : "short" }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date | date : "short" }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ date | date : "fullDate" }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date | date : "fullDate" }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ date | date : "medium" }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date | date : "medium" }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ date | date : "shortDate" }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date | date : "shortDate" }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ date | date : "shortTime" }}
+    </td>
+    <td>date = new Date;</td>
+    <td>
+      {{ date | date : "shortTime" }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ testText | lowercase }}
+    </td>
+    <td ngNonBindable>testText = "TestTexT TestTexT";</td>
+    <td>
+      {{ testText | lowercase }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ testText | uppercase }}
+    </td>
+    <td ngNonBindable>testText = "TestTexT TestTexT";</td>
+    <td>
+      {{ testText | uppercase }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ testText | titlecase }}
+    </td>
+    <td ngNonBindable>testText = "TestTexT TestTexT";</td>
+    <td>
+      {{ testText | titlecase }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ pi | number }}
+    </td>
+    <td ngNonBindable>pi:number = Math.PI;</td>
+    <td>
+      {{ pi | number }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ pi | number : "1.3-7" }}
+    </td>
+    <td ngNonBindable>pi:number = Math.PI;</td>
+    <td>
+      {{ pi | number : "1.3-7" }}
+    </td>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ pi | number : "3.3-7" }}
+    </td>
+    <td ngNonBindable>pi:number = Math.PI;</td>
+    <td>
+      {{ pi | number : "3.3-7" }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ 0.25 | currency }}
+    </td>
+    <td ngNonBindable>0.25</td>
+    <td>
+      {{ 0.25 | currency }}
+    </td>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ 0.25 | currency : "GBP" }}
+    </td>
+    <td ngNonBindable>0.25</td>
+    <td>
+      {{ 0.25 | currency : "GBP" }}
+    </td>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ 0.25 | currency : "GBP" : "code" }}
+    </td>
+    <td ngNonBindable>0.25</td>
+    <td>
+      {{ 0.25 | currency : "GBP" : "code" }}
+    </td>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ 0.25 | currency : "UA" : true }}
+    </td>
+    <td ngNonBindable>0.25</td>
+    <td>
+      {{ 0.25 | currency : "UA" : true }}
+    </td>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ 0.25 | percent }}
+    </td>
+    <td ngNonBindable>0.25</td>
+    <td>
+      {{ 0.25 | percent }}
+    </td>
+  </tr>
+  <tr>
+    <td ngNonBindable>
+      {{ testText | slice : 3 }}
+    </td>
+    <td ngNonBindable>testText = "TestTexT TestTexT";</td>
+    <td>
+      {{ testText | slice : 3 }}
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>
+      {{ testText | slice : 3 : 7 }}
+    </td>
+    <td ngNonBindable>testText = "TestTexT TestTexT";</td>
+    <td>
+      {{ testText | slice : 3 : 7 }}
+    </td>
+  </tr>
+  <tr>
+    <td>*ngFor="let c of cars | slice : 0 : 2"</td>
+    <td>
+      <div>cars.length - {{ cars.length }}</div>
+      <div>-</div>
+      <div *ngFor="let c of cars">
+        {{ c.name }}
+      </div>
+      <div>-</div>
+      <div>cars = [ &#123;name: 'Ford', color: "red"&#125;...</div>
+    </td>
+    <td>
+      <div *ngFor="let c of cars | slice : 0 : 2">
+        {{ c.name }}
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div>...*ngFor="let c of cars[0] | keyvalue"...</div>
+      <div ngNonBindable>
+        {{ c.key }}
+      </div>
+    </td>
+    <td>
+      <div>cars.length - {{ cars.length }}</div>
+      <div>-</div>
+      <div *ngFor="let c of cars">
+        {{ c.name }}
+      </div>
+      <div>-</div>
+      <div>cars = [ &#123;name: 'Ford', color: "red"&#125;...</div>
+    </td>
+    <td>
+      <div *ngFor="let c of cars[0] | keyvalue">
+        {{ c.key }}
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <div>...*ngFor="let c of cars[0] | keyvalue"...</div>
+      <div ngNonBindable>
+        {{ c.value }}
+      </div>
+    </td>
+    <td>
+      <div>cars.length - {{ cars.length }}</div>
+      <div>-</div>
+      <div *ngFor="let c of cars">
+        {{ c.name }}
+      </div>
+      <div>-</div>
+      <div>cars = [ &#123;name: 'Ford', color: "red"&#125;...</div>
+    </td>
+    <td>
+      <div *ngFor="let c of cars[0] | keyvalue">
+        {{ c.value }}
+      </div>
+    </td>
+  </tr>
+
+  <tr>
+    <td ngNonBindable>{{ json | json }}</td>
+    <td ngNonBindable>[ &#123;id: 1, name: "jone"...</td>
+    <td>{{ json | json }}</td>
+  </tr>
+</table>

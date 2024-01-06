@@ -1,0 +1,25 @@
+<h3>client works!</h3>
+<!-- <table>
+  <tr *ngFor="let l of list">
+    <td>title</td>
+    <td>
+      {{ l.title }}
+    </td>
+  </tr>
+</table> -->
+
+<!-- <table>
+  <tr *ngFor="let l of list$ | async">
+    <td>title</td>
+    <td>
+      {{ l.title }}
+    </td>
+  </tr>
+</table> -->
+
+<table *ngIf="list$ | async as list">
+  <tr *ngFor="let l of list">
+    <td>title</td>
+    <td>{{ l.title }}</td>
+  </tr>
+</table>

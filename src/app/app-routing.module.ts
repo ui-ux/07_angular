@@ -9,6 +9,9 @@ import { IfElementComponent } from './if-element/if-elementcomponent';
 import { NgClassComponent } from './ng-class/ng-class.component';
 import { NgStyleComponent } from './ng-style/ng-style.component';
 import { SwitchComponent } from './switch/switch.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ClientComponent } from './client/client.component';
+import { CustomServiceComponent } from './custom-service/custom-service.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/elements-model-view', pathMatch: 'full'},
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'ng-class', component: NgClassComponent },
   { path: 'ng-style', component: NgStyleComponent },
   { path: 'switch', component: SwitchComponent },
+  { path: 'pipes', component: PipesComponent },
+  { path: 'client', component: ClientComponent },
+  { path: 'custom-service', component: CustomServiceComponent },
   { path: '**', component: ElementsModelViewComponent },
 ];
 

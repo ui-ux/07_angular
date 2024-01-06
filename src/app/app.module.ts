@@ -16,6 +16,11 @@ import { IfElementComponent } from './if-element/if-elementcomponent';
 import { NgClassComponent } from './ng-class/ng-class.component';
 import { NgStyleComponent } from './ng-style/ng-style.component';
 import { SwitchComponent } from './switch/switch.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ClientComponent } from './client/client.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CustomServiceComponent } from './custom-service/custom-service.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,12 +38,17 @@ import { SwitchComponent } from './switch/switch.component';
     NgClassComponent,
     NgStyleComponent,
     SwitchComponent,
+    PipesComponent,
+    ClientComponent,
+    CustomServiceComponent,
   ],
   imports: [
     BrowserModule,
     CommonModule,
     RouterOutlet,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

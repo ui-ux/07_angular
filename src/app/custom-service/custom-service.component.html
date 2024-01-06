@@ -1,0 +1,13 @@
+<h3>custom-service works!</h3>
+<table *ngIf="list$ | async as list">
+  <button (click)="saveAll(list)">Update</button>
+  <tr *ngFor="let l of list">
+    <td>title</td>
+    <td>
+      <input [(ngModel)]="l.title" />
+    </td>
+    <td>
+      <button (click)="save(l)">Update</button>
+    </td>
+  </tr>
+</table>
