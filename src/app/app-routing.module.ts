@@ -12,6 +12,8 @@ import { SwitchComponent } from './switch/switch.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ClientComponent } from './client/client.component';
 import { CustomServiceComponent } from './custom-service/custom-service.component';
+import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/elements-model-view', pathMatch: 'full'},
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'pipes', component: PipesComponent },
   { path: 'client', component: ClientComponent },
   { path: 'custom-service', component: CustomServiceComponent },
+  { path: 'template-directive-forms', component: TemplateDirectiveFormsComponent },
+  { path: 'reactive-forms', component: ReactiveFormsComponent },
   { path: '**', component: ElementsModelViewComponent },
 ];
 

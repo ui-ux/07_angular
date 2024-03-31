@@ -20,7 +20,9 @@ import { PipesComponent } from './pipes/pipes.component';
 import { ClientComponent } from './client/client.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomServiceComponent } from './custom-service/custom-service.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { FormsModule } from '@angular/forms';
     PipesComponent,
     ClientComponent,
     CustomServiceComponent,
+    TemplateDirectiveFormsComponent,
+    ReactiveFormsComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
