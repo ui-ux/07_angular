@@ -23,6 +23,11 @@ import { CustomServiceComponent } from './custom-service/custom-service.componen
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { RouteParametersComponent } from './route-parameters/route-parameters.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
+import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-test-two.component';
+import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +50,11 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
     CustomServiceComponent,
     TemplateDirectiveFormsComponent,
     ReactiveFormsComponent,
+    PageNotFoundComponent,
+    RouteParametersComponent,
+    RouteParametersDetailsComponent,
+    ChildTestOneComponent,
+    ChildTestTwoComponent,
   ],
   imports: [
     BrowserModule,

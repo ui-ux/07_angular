@@ -14,6 +14,11 @@ import { ClientComponent } from './client/client.component';
 import { CustomServiceComponent } from './custom-service/custom-service.component';
 import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RouteParametersComponent } from './route-parameters/route-parameters.component';
+import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
+import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-test-two.component';
+import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/elements-model-view', pathMatch: 'full'},
@@ -32,7 +37,15 @@ const routes: Routes = [
   { path: 'custom-service', component: CustomServiceComponent },
   { path: 'template-directive-forms', component: TemplateDirectiveFormsComponent },
   { path: 'reactive-forms', component: ReactiveFormsComponent },
-  { path: '**', component: ElementsModelViewComponent },
+  { path: 'route-parameters', component: RouteParametersComponent },
+  {
+    path: 'route-parameters/:id', component: RouteParametersDetailsComponent,
+    children: [
+      { path: 'test-one', component: ChildTestOneComponent },
+      { path: 'test-two', component: ChildTestTwoComponent },
+    ]
+   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

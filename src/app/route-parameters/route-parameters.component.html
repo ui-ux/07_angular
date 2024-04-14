@@ -1,0 +1,12 @@
+<p>route-parameters works!</p>
+<ul>
+  <li
+    class="pb-2"
+    *ngFor="let l of list; let i = index"
+    (click)="onSelect(l)"
+    [class.selected]="isSelected(l)"
+  >
+    <span>{{ l.id }} - </span>
+    <span>{{ l.name }}</span>
+  </li>
+</ul>

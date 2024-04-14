@@ -1,0 +1,26 @@
+<p>route-parameters-details works!</p>
+<p>{{ listId }}</p>
+<button type="button" class="btn btn-primary mr-2" (click)="goPrev()">
+  Prev
+</button>
+<button type="button" class="btn btn-primary mr-2" (click)="goNext()">
+  Next
+</button>
+
+<div class="py-3">
+  <button type="button" class="btn btn-primary mr-2" (click)="back()">
+    Back
+  </button>
+</div>
+
+<div class="p-3">
+  <button type="button" class="btn btn-primary mr-2" (click)="goOne()">
+    One child
+  </button>
+  <button type="button" class="btn btn-primary mr-2" (click)="goTwo()">
+    Two child
+  </button>
+</div>
+<div>
+  <router-outlet></router-outlet>
+</div>
