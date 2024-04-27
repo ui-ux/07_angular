@@ -1,3 +1,20 @@
+<div class="language">
+  <button
+    type="button"
+    [class.active]="conditionEn"
+    (click)="switchLanguageEn('en')"
+  >
+    en
+  </button>
+
+  <button
+    type="button"
+    [class.active]="conditionUa"
+    (click)="switchLanguageRu('ua')"
+  >
+    ua
+  </button>
+</div>
 <main class="main">
   <navigation></navigation>
   <router-outlet></router-outlet>

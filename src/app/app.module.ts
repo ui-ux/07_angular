@@ -18,7 +18,6 @@ import { NgStyleComponent } from './ng-style/ng-style.component';
 import { SwitchComponent } from './switch/switch.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ClientComponent } from './client/client.component';
-import { HttpClientModule } from '@angular/common/http';
 import { CustomServiceComponent } from './custom-service/custom-service.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
@@ -28,6 +27,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
 import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-test-two.component';
 import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 
 @NgModule({
   declarations: [
@@ -64,8 +71,15 @@ import { ChildTestOneComponent } from './route-parameters/child-test-one/child-t
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
