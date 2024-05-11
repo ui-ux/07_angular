@@ -1,10 +1,11 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, concatMap, forkJoin, switchMap } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ListService {
   constructor(private http: HttpClient) {
     console.log('it is ListService');
@@ -20,7 +21,6 @@ export class ListService {
 
   // This indicates that you want to get data from the first page,
   // and each page has a maximum of 10 records(objects).
-
   // this is to implement pagination of query results
 
   updateTitle(id: number, updatedTitle: string): Observable<any> {
@@ -39,4 +39,10 @@ export class ListService {
 
     return forkJoin(requests);
   }
+
+
+  getDataById(id: number): Observable<any> {
+    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`);
+  }
+
 }

@@ -18,7 +18,8 @@
 </table> -->
 
 <table *ngIf="list$ | async as list">
-  <tr *ngFor="let l of list">
+  <tr *ngFor="let l of list; let i = index">
+    <td>{{ i + 1 }}</td>
     <td>title</td>
     <td>{{ l.title }}</td>
   </tr>

@@ -1,0 +1,38 @@
+<h3>custom-service component</h3>
+<input
+  type="number"
+  [(ngModel)]="id"
+  class="form-control mb-2"
+  placeholder="Enter ID"
+/>
+<button (click)="getDataById()" class="btn btn-primary mb-2">
+  Get Data by ID
+</button>
+<div *ngIf="error" class="alert alert-danger" role="alert">
+  {{ error }}
+</div>
+
+<div *ngIf="dataById">
+  <p><b>ID:</b> {{ dataById.id }}</p>
+  <p><b>Title:</b> {{ dataById.title }}</p>
+  <p><b>Body:</b> {{ dataById.body }}</p>
+</div>
+
+<div class="py-3">
+  <hr />
+</div>
+
+<table *ngIf="posts$ | async as posts" class="table table-bordered">
+  <button (click)="saveAll(list)" class="btn btn-primary mb-2">
+    Update All
+  </button>
+  <tr *ngFor="let post of posts">
+    <td>{{ post.id }}</td>
+    <td>
+      <input [(ngModel)]="post.title" class="form-control" />
+    </td>
+    <td>
+      <button (click)="save(post)" class="btn btn-primary">Update</button>
+    </td>
+  </tr>
+</table>

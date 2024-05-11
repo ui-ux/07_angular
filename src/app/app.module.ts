@@ -18,7 +18,7 @@ import { NgStyleComponent } from './ng-style/ng-style.component';
 import { SwitchComponent } from './switch/switch.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ClientComponent } from './client/client.component';
-import { CustomServiceComponent } from './custom-service/custom-service.component';
+import { CustomServiceComponent } from './custom-service/custom-service-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
