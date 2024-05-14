@@ -1,24 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListService } from '../services/list.service';
 
 @Component({
   selector: 'app-custom-service',
   templateUrl: './custom-service-component.component.html',
-  styleUrl: './custom-service-component.component.scss'
+  styleUrls: ['./custom-service-component.component.scss']
 })
-export class CustomServiceComponent {
+export class CustomServiceComponent implements OnInit {
   posts$: Observable<any[]> | undefined;
   list: any[] = [];
   id: number | undefined;
   dataById: any | undefined;
   error: string | undefined;
 
-  constructor(
-    private listService: ListService) { }
+  constructor(private listService: ListService) {}
 
   ngOnInit(): void {
     this.posts$ = this.listService.loadList();
+    this.posts$.subscribe(posts => {
+      this.list = posts;
+    });
   }
 
   save(item: any): void {
@@ -28,7 +30,6 @@ export class CustomServiceComponent {
         error: error => console.error('An error occurred while updating:', error)
       });
   }
-
 
   saveAll(list: any[]): void {
     this.listService.updateAllTitleg(list)
