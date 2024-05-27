@@ -19,32 +19,42 @@ import { RouteParametersComponent } from './route-parameters/route-parameters.co
 import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
 import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-test-two.component';
 import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { AuthGuard } from './services/auth.guard';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/elements-model-view', pathMatch: 'full'},
-  { path: '', component: ElementsModelViewComponent },
-  { path: 'elements-model-view', component: ElementsModelViewComponent },
-  { path: 'event', component: EventComponent },
-  { path: 'input-decorator', component: InputDecoratorComponent },
-  { path: 'output-parent', component: OutputParentComponent },
-  { path: 'for-parent', component: ForParentComponent },
-  { path: 'if-element', component: IfElementComponent },
-  { path: 'ng-class', component: NgClassComponent },
-  { path: 'ng-style', component: NgStyleComponent },
-  { path: 'switch', component: SwitchComponent },
-  { path: 'pipes', component: PipesComponent },
-  { path: 'client', component: ClientComponent },
-  { path: 'custom-service', component: CustomServiceComponent },
-  { path: 'template-directive-forms', component: TemplateDirectiveFormsComponent },
-  { path: 'reactive-forms', component: ReactiveFormsComponent },
-  { path: 'route-parameters', component: RouteParametersComponent },
+  { path: '', component: AuthenticationComponent},
   {
-    path: 'route-parameters/:id', component: RouteParametersDetailsComponent,
+    path: 'home', component: HomeComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'test-one', component: ChildTestOneComponent },
-      { path: 'test-two', component: ChildTestTwoComponent },
+      { path: '', redirectTo: '/elements-model-view', pathMatch: 'full'},
+      { path: '', component: ElementsModelViewComponent},
+      { path: 'elements-model-view', component: ElementsModelViewComponent },
+      { path: 'event', component: EventComponent },
+      { path: 'input-decorator', component: InputDecoratorComponent },
+      { path: 'output-parent', component: OutputParentComponent },
+      { path: 'for-parent', component: ForParentComponent },
+      { path: 'if-element', component: IfElementComponent },
+      { path: 'ng-class', component: NgClassComponent },
+      { path: 'ng-style', component: NgStyleComponent },
+      { path: 'switch', component: SwitchComponent },
+      { path: 'pipes', component: PipesComponent },
+      { path: 'client', component: ClientComponent },
+      { path: 'custom-service', component: CustomServiceComponent },
+      { path: 'template-directive-forms', component: TemplateDirectiveFormsComponent },
+      { path: 'reactive-forms', component: ReactiveFormsComponent },
+      { path: 'route-parameters', component: RouteParametersComponent },
+      {
+        path: 'route-parameters/:id', component: RouteParametersDetailsComponent,
+        children: [
+          { path: 'test-one', component: ChildTestOneComponent },
+          { path: 'test-two', component: ChildTestTwoComponent },
+        ]
+      },
     ]
    },
+
   { path: '**', component: PageNotFoundComponent },
 ];
 

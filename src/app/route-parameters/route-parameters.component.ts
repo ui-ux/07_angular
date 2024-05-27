@@ -28,7 +28,7 @@ export class RouteParametersComponent implements OnInit  {
   isSelected(l:any) { return l.id === this.selectedId; }
 
   onSelect(list: any) {
-    this.router.navigate(['/route-parameters', list.id]);
+    this.router.navigate(['home/route-parameters', list.id]);
    // Relative Path
    // this.router.navigate([list.id], { relativeTo: this.route });
 

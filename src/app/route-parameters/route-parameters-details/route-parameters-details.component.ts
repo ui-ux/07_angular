@@ -25,20 +25,20 @@ export class RouteParametersDetailsComponent implements OnInit {
   goPrev() {
     const previousId = +this.listId - 1;
     if (previousId >= 1) {
-      this.router.navigate(['/route-parameters', previousId ]);
+      this.router.navigate(['home/route-parameters', previousId ]);
     }
   }
 
   goNext() {
     const nextId = +this.listId + 1;
     if (nextId < 6) {
-      this.router.navigate(['/route-parameters', nextId ]);
+      this.router.navigate(['home/route-parameters', nextId ]);
     }
   }
 
   back() {
     const selectedId = this.listId ? this.listId : null;
-    this.router.navigate(['/route-parameters', { id: selectedId }]);
+    this.router.navigate(['home/route-parameters', { id: selectedId }]);
 
     // Relative Path
     // this.router.navigate(['../', {id: selectedId}], { relativeTo: this.route });

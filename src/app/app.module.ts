@@ -30,6 +30,8 @@ import { ChildTestOneComponent } from './route-parameters/child-test-one/child-t
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { HomeComponent } from './home/home.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,7 +45,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     ElementsModelViewComponent,
     ChildInputDecoratorComponent,
     InputDecoratorComponent,
-    ChildInputDecoratorComponent,
     OutputParentComponent,
     ChildOutputParentComponent,
     ForParentComponent,
@@ -62,6 +63,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouteParametersDetailsComponent,
     ChildTestOneComponent,
     ChildTestTwoComponent,
+    AuthenticationComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
