@@ -1,0 +1,130 @@
+<h3>State management basics</h3>
+<div>
+  A set of state management libraries based on RxJS using the Redux pattern for
+  Angular
+</div>
+<div class="pt-3">
+  <p><b>State</b></p>
+  <ul class="pl-3">
+    <li>Data</li>
+    <li>All variables in the application</li>
+    <li>Application behavior at this point in time</li>
+  </ul>
+</div>
+<div>
+  <img
+    src="assets/img/NgRx-state-management-process.jpg"
+    width="500"
+    height="300"
+  />
+</div>
+<div>
+  <b>
+    The NgRx state management process is a combination of five key elements:
+  </b>
+  <div>
+    <ul class="pl-3">
+      <li>
+        <b>Store:</b> The application state is maintained in the store. It is
+        immutable.
+      </li>
+      <li>
+        <b>Selectors:</b> Angular components can subscribe to the store and get
+        updates through selectors.
+      </li>
+      <li>
+        <b>Reducers:</b> Reducers are responsible for handling the transition
+        from one state to another.
+      </li>
+      <li>
+        <b>Actions:</b> Actions modify the state of the store by using reducers.
+      </li>
+      <li>
+        <b>Effects:</b> Effects are the results of actions. Also, they can be
+        used to listen for particular action types and run when the action
+        happens.
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- <pre>
+  Describing state
+  Dispatching actions
+  Listening to state updates
+  Effects
+  Debugging
+  Selector functions
+  Entities
+  Component architecture
+</pre> -->
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Form</h2>
+      </div>
+      <div class="col-md-6">
+        <div class="card p-4 shadow-sm">
+          <form #myform="ngForm" (ngSubmit)="addArticle(myform)">
+            <div class="form-group">
+              <label for="name">Article Id</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="id"
+                id="id"
+                aria-describedby="identity"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="title"
+                id="title"
+                aria-describedby="title"
+              />
+            </div>
+            <div class="form-group">
+              <label for="author">Author</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="author"
+                id="author"
+              />
+            </div>
+            <div class="form-group">
+              <label for="publisher">Publisher</label>
+              <input
+                type="text"
+                class="form-control"
+                ngModel
+                name="publisher"
+                id="publisher"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group">
+          <li
+            class="list-group-item list-group-item-primary"
+            *ngFor="let article of articles$ | async"
+          >
+            <b>{{ article | json }}</b>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

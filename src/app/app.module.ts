@@ -32,6 +32,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
+import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
+import { StoreModule } from '@ngrx/store';
+import { ArticleReducer } from './store/reducers/course.reducer';
+
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,8 +70,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChildTestTwoComponent,
     AuthenticationComponent,
     HomeComponent,
+    NgRxMainComponent,
   ],
   imports: [
+    StoreModule.forRoot({ article: ArticleReducer }),
     BrowserModule,
     CommonModule,
     RouterOutlet,

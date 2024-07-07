@@ -22,6 +22,7 @@ import { ChildTestOneComponent } from './route-parameters/child-test-one/child-t
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthGuard } from './services/auth.guard';
 import { HomeComponent } from './home/home.component';
+import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent},
@@ -52,6 +53,7 @@ const routes: Routes = [
           { path: 'test-two', component: ChildTestTwoComponent },
         ]
       },
+      { path: 'ngrx', component: NgRxMainComponent },
     ]
    },
 
