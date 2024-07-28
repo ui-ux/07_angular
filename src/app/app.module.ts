@@ -38,7 +38,8 @@ import { ArticleReducer } from './store/reducers/course.reducer';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
-
+import { NgRxPeriodicComponent } from './ng-rx-main-periodic/ng-rx-periodic.component';
+import {MatInputModule} from '@angular/material/input';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -74,6 +75,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         AuthenticationComponent,
         HomeComponent,
         NgRxMainComponent,
+        NgRxPeriodicComponent,
     ],
   imports: [
     StoreModule.forRoot({ article: ArticleReducer }),
@@ -83,6 +85,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         AppRoutingModule,
         MatTableModule,
         MatSortModule,
+        MatInputModule,
         FormsModule,
         ReactiveFormsModule,
         TranslateModule.forRoot({
