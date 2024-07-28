@@ -47,7 +47,7 @@
     </td>
     <td>
       <div>
-        @switch (null) { @case(5) {
+        @switch (null) { @case(testCount) {
         <div>count: number = 5;</div>
         } @default {
         <div>No count</div>
@@ -71,11 +71,12 @@
       </pre>
     </td>
     <td>
-      <div [ngSwitch]="count">
+      old syntax
+      <!-- <div [ngSwitch]="count">
         <ng-container *ngSwitchCase="1">{{ count * 1 }}</ng-container>
         <ng-container *ngSwitchCase="5">{{ count + 5 }}</ng-container>
         <ng-container *ngSwitchDefault>{{ count * 1000 }}</ng-container>
-      </div>
+      </div> -->
     </td>
   </tr>
   <tr>
@@ -89,12 +90,13 @@
       </button>
     </td>
     <td>
-      <div [ngSwitch]="current" style="background: cornflowerblue">
+      old syntax
+      <!-- <div [ngSwitch]="current" style="background: cornflowerblue">
         <ng-template ngSwitchCase="uno"> uno </ng-template>
         <ng-template ngSwitchCase="dos"> dos </ng-template>
         <ng-template ngSwitchCase="tress"> tress </ng-template>
         <ng-template ngSwitchDefault>not found</ng-template>
-      </div>
+      </div> -->
     </td>
   </tr>
 </table>

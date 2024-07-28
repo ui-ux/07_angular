@@ -29,12 +29,15 @@ import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-t
 import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
 import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
 import { StoreModule } from '@ngrx/store';
 import { ArticleReducer } from './store/reducers/course.reducer';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 
@@ -45,51 +48,52 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    NavigationComponent,
-    ElementsModelViewComponent,
-    ChildInputDecoratorComponent,
-    InputDecoratorComponent,
-    OutputParentComponent,
-    ChildOutputParentComponent,
-    ForParentComponent,
-    ChildForComponent,
-    IfElementComponent,
-    NgClassComponent,
-    NgStyleComponent,
-    SwitchComponent,
-    PipesComponent,
-    ClientComponent,
-    CustomServiceComponent,
-    TemplateDirectiveFormsComponent,
-    ReactiveFormsComponent,
-    PageNotFoundComponent,
-    RouteParametersComponent,
-    RouteParametersDetailsComponent,
-    ChildTestOneComponent,
-    ChildTestTwoComponent,
-    AuthenticationComponent,
-    HomeComponent,
-    NgRxMainComponent,
-  ],
+        AppComponent,
+        NavigationComponent,
+        ElementsModelViewComponent,
+        ChildInputDecoratorComponent,
+        InputDecoratorComponent,
+        OutputParentComponent,
+        ChildOutputParentComponent,
+        ForParentComponent,
+        ChildForComponent,
+        IfElementComponent,
+        NgClassComponent,
+        NgStyleComponent,
+        SwitchComponent,
+        PipesComponent,
+        ClientComponent,
+        CustomServiceComponent,
+        TemplateDirectiveFormsComponent,
+        ReactiveFormsComponent,
+        PageNotFoundComponent,
+        RouteParametersComponent,
+        RouteParametersDetailsComponent,
+        ChildTestOneComponent,
+        ChildTestTwoComponent,
+        AuthenticationComponent,
+        HomeComponent,
+        NgRxMainComponent,
+    ],
   imports: [
     StoreModule.forRoot({ article: ArticleReducer }),
-    BrowserModule,
-    CommonModule,
-    RouterOutlet,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
+        BrowserModule,
+        CommonModule,
+        RouterOutlet,
+        AppRoutingModule,
+        MatTableModule,
+        MatSortModule,
+        FormsModule,
+        ReactiveFormsModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            }
+        }),
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

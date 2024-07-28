@@ -13,3 +13,6 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

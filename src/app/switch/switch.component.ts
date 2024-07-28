@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './switch.component.scss'
 })
 export class SwitchComponent {
-  count: number = 5;
+  count: number | null | undefined;
+  testCount: number | null | undefined = 5;
   current: string = '';
   abc = ['uno', 'dos', 'tress', 'cuatro'];
 
