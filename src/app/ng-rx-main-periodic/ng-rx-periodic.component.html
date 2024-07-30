@@ -2,6 +2,7 @@
   <mat-form-field>
     <input
       matInput
+      [value]="filter$ | async"
       (input)="applyFilter($event)"
       placeholder="Search by name"
     />
@@ -34,3 +35,89 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
 </ng-container>
+
+<div>
+  <h4 class="mt-3">State</h4>
+  <div>State structure using interfaces</div>
+  <div>
+    <img src="/assets/img/srate-interface.png" alt="Srate Interface" />
+  </div>
+</div>
+
+<div>
+  <h4 class="mt-3">Actions</h4>
+  <div>
+    <ul>
+      <li><b>createAction:</b> Function to create a new action.</li>
+      <li><b>props:</b> Function to define action properties.</li>
+      <li>
+        <b>PeriodicElement:</b> An interface that describes the data model of an
+        element.
+      </li>
+    </ul>
+  </div>
+  <div>
+    <img src="/assets/img/action.png" alt="Action" />
+  </div>
+</div>
+
+<div>
+  <h4 class="mt-3">Reducer</h4>
+  <div>
+    <b>A reducer</b> gets the current state and an action, and then returns a
+    new state based on that action.
+  </div>
+  <div>
+    <ul>
+      <li><b>createReducer:</b> Function to create a reducer.</li>
+      <li>
+        <b>on:</b> A function for processing specific actions in the reducer.
+      </li>
+      <li>
+        <b>PeriodicElementState:</b> An interface that describes the state model
+        for elements.
+      </li>
+      <li>
+        <b>loadElements, setFilter:</b> Import actions from the file actions.
+      </li>
+    </ul>
+  </div>
+  <div>
+    <img src="/assets/img/reducer.png" alt="Reducer" />
+  </div>
+</div>
+
+<div>
+  <h4 class="mt-3">Selectors</h4>
+  <div>
+    <b>Selectors </b>defines functions used to sample and compute data from the
+    global state of the NgRx Store.<br />
+    <b>Selectors</b> allow components to subscribe to specific state changes and
+    receive only the data they need.
+  </div>
+  <div>
+    <ul>
+      <li><b>createSelector:</b> Function for creating selectors.</li>
+      <li>
+        <b>AppState, PeriodicElementState:</b> Interfaces that describe the
+        structure of the application state and the state of periodic elements.
+      </li>
+      <li>
+        <b>selectPeriodicElementState:</b> A selector function that receives the
+        entire state of the application (AppState) and returns only the state of
+        periodic elements (PeriodicElementState).
+      </li>
+      <li>
+        <b>selectFilteredElements:</b> A selector that uses
+        selectPeriodicElementState to retrieve the state of periodic elements.
+      </li>
+      <li>
+        <b>selectFilter:</b> A selector that uses selectPeriodicElementState to
+        get the state of periodic elements and returns only the filter value.
+      </li>
+    </ul>
+  </div>
+  <div>
+    <img src="/assets/img/selectors.png" alt="Selectors" />
+  </div>
+</div>

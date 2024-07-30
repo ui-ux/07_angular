@@ -39,7 +39,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { NgRxPeriodicComponent } from './ng-rx-main-periodic/ng-rx-periodic.component';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { EffectsModule } from '@ngrx/effects';
+import { periodicElementReducer } from './ng-rx-main-periodic/store/reducers/periodic.reduser';
+
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -78,23 +81,28 @@ export function HttpLoaderFactory(http: HttpClient) {
         NgRxPeriodicComponent,
     ],
   imports: [
-    StoreModule.forRoot({ article: ArticleReducer }),
-        BrowserModule,
-        CommonModule,
-        RouterOutlet,
-        AppRoutingModule,
-        MatTableModule,
-        MatSortModule,
-        MatInputModule,
-        FormsModule,
-        ReactiveFormsModule,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient]
-            }
-        }),
+    StoreModule.forRoot(
+      {
+        periodicElements: periodicElementReducer,
+        article: ArticleReducer,
+      }),
+    EffectsModule.forRoot([]),
+    BrowserModule,
+    CommonModule,
+    RouterOutlet,
+    AppRoutingModule,
+    MatTableModule,
+    MatSortModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [HttpClient, provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()],
   bootstrap: [AppComponent]

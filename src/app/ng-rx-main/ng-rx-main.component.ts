@@ -1,21 +1,18 @@
-import {  Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { map, Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { NgForm } from '@angular/forms';
 import { AddArticleAction } from '../store/actions/article.actions';
 import { State } from '../store/state.model';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatSort, Sort } from '@angular/material/sort';
-import { NgForm } from '@angular/forms';
 import { Article } from '../store/models/article.model';
+
 
 @Component({
   selector: 'app-ng-rx-main',
   templateUrl: './ng-rx-main.component.html',
-  styleUrl: './ng-rx-main.component.scss',
+  styleUrl: './ng-rx-main.component.scss'
 })
-
-export class NgRxMainComponent implements OnInit {
-  @ViewChild(MatSort) sort!: MatSort;
+export class NgRxMainComponent  implements OnInit {
   articles$!: Observable<Array<Article>>;
 
   constructor(private store: Store<State>) {}
@@ -29,4 +26,3 @@ export class NgRxMainComponent implements OnInit {
     form.reset();
   }
 }
-

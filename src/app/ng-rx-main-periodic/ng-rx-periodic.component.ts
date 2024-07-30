@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { of, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { PeriodicElement } from './store/models/periodic.model';
+import { selectFilteredElements, selectFilter } from './store/selectors/selectors';
+import { loadElements, setFilter } from './store/actions/actions';
+import { AppState } from './store/state/state';
 
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
@@ -29,19 +26,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class NgRxPeriodicComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource$: Observable<PeriodicElement[]> = of(ELEMENT_DATA);
+  dataSource$: Observable<PeriodicElement[]>;
+  filter$: Observable<string>;
+  constructor(private store: Store<AppState>) {
+    this.dataSource$ = this.store.select(selectFilteredElements);
+    this.filter$ = this.store.select(selectFilter);
+  }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.dispatch(loadElements({ elements: ELEMENT_DATA }));
+  }
 
   applyFilter(event: Event): void {
     const input = event.target as HTMLInputElement;
-    const filterValue = input.value.trim().toLowerCase();
-
-    this.dataSource$ = of(ELEMENT_DATA).pipe(
-      map(data => data.filter(element => element.name.toLowerCase().includes(filterValue)))
-    );
+    const filterValue = input.value.trim();
+    this.store.dispatch(setFilter({ filter: filterValue }));
   }
 }
 
