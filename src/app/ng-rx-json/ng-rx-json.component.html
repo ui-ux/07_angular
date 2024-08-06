@@ -1,0 +1,20 @@
+<div *ngIf="loading$ | async">Loading...</div>
+<div *ngIf="error$ | async as error">{{ error }}</div>
+<ul *ngIf="users$ | async as users" class="list-group">
+  <li class="list-group-item" *ngFor="let user of users">
+    <strong>{{ user.name }}</strong>
+
+    <ul class="list-group mt-2">
+      <li class="list-group-item">
+        <strong>Address:</strong>
+        {{ user.address.street }}, {{ user.address.suite }},
+        {{ user.address.city }}, {{ user.address.zipcode }}
+      </li>
+      <li class="list-group-item">
+        <strong>Geo:</strong>
+        Latitude: {{ user.address.geo.lat }}, Longitude:
+        {{ user.address.geo.lng }}
+      </li>
+    </ul>
+  </li>
+</ul>

@@ -42,6 +42,9 @@ import { NgRxPeriodicComponent } from './ng-rx-main-periodic/ng-rx-periodic.comp
 import { MatInputModule } from '@angular/material/input';
 import { EffectsModule } from '@ngrx/effects';
 import { periodicElementReducer } from './ng-rx-main-periodic/store/reducers/periodic.reduser';
+import { NgRxJsonComponent } from './ng-rx-json/ng-rx-json.component';
+import { UserEffects } from './ng-rx-json/effects/user.effects';
+import { userReducer } from './ng-rx-json/store/reducer/user.reducer';
 
 
 
@@ -52,41 +55,43 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-        AppComponent,
-        NavigationComponent,
-        ElementsModelViewComponent,
-        ChildInputDecoratorComponent,
-        InputDecoratorComponent,
-        OutputParentComponent,
-        ChildOutputParentComponent,
-        ForParentComponent,
-        ChildForComponent,
-        IfElementComponent,
-        NgClassComponent,
-        NgStyleComponent,
-        SwitchComponent,
-        PipesComponent,
-        ClientComponent,
-        CustomServiceComponent,
-        TemplateDirectiveFormsComponent,
-        ReactiveFormsComponent,
-        PageNotFoundComponent,
-        RouteParametersComponent,
-        RouteParametersDetailsComponent,
-        ChildTestOneComponent,
-        ChildTestTwoComponent,
-        AuthenticationComponent,
-        HomeComponent,
-        NgRxMainComponent,
-        NgRxPeriodicComponent,
-    ],
+    AppComponent,
+    NavigationComponent,
+    ElementsModelViewComponent,
+    ChildInputDecoratorComponent,
+    InputDecoratorComponent,
+    OutputParentComponent,
+    ChildOutputParentComponent,
+    ForParentComponent,
+    ChildForComponent,
+    IfElementComponent,
+    NgClassComponent,
+    NgStyleComponent,
+    SwitchComponent,
+    PipesComponent,
+    ClientComponent,
+    CustomServiceComponent,
+    TemplateDirectiveFormsComponent,
+    ReactiveFormsComponent,
+    PageNotFoundComponent,
+    RouteParametersComponent,
+    RouteParametersDetailsComponent,
+    ChildTestOneComponent,
+    ChildTestTwoComponent,
+    AuthenticationComponent,
+    HomeComponent,
+    NgRxMainComponent,
+    NgRxPeriodicComponent,
+    NgRxJsonComponent
+  ],
   imports: [
     StoreModule.forRoot(
       {
         periodicElements: periodicElementReducer,
         article: ArticleReducer,
+        users: userReducer,
       }),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([UserEffects]),
     BrowserModule,
     CommonModule,
     RouterOutlet,

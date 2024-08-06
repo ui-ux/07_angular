@@ -24,6 +24,7 @@ import { AuthGuard } from './services/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
 import { NgRxPeriodicComponent } from './ng-rx-main-periodic/ng-rx-periodic.component';
+import { NgRxJsonComponent } from './ng-rx-json/ng-rx-json.component';
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent},
@@ -56,6 +57,7 @@ const routes: Routes = [
       },
       { path: 'ngrx', component: NgRxMainComponent },
       { path: 'ngrx-periodic', component: NgRxPeriodicComponent },
+      { path: 'ngrx-json', component: NgRxJsonComponent },
     ]
    },
 
