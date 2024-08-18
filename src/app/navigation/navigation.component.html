@@ -190,8 +190,9 @@
     <button
       type="button"
       class="navigation-list"
-      routerLink="store-routing-page"
+      routerLink="store-routing-page/1"
       routerLinkActive="active"
+      [queryParams]="{ testParam: '123', anotherParam: 'value' }"
     >
       <span>store-page</span>
     </button>

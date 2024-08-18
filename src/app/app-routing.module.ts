@@ -59,7 +59,11 @@ const routes: Routes = [
       { path: 'ngrx', component: NgRxMainComponent },
       { path: 'ngrx-periodic', component: NgRxPeriodicComponent },
       { path: 'ngrx-json', component: NgRxJsonComponent },
-      { path: 'store-routing-page', component: StoreModulePageComponent },
+      {
+        path: 'store-routing-page/:carId',
+        component: StoreModulePageComponent,
+        title: 'Store Routing Page',
+      }
 
     ]
    },

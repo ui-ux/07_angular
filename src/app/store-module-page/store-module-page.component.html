@@ -1,16 +1,44 @@
 <p>store-module-page works!</p>
 
-<h3>All Cars:</h3>
+<h6>All Cars:</h6>
 <ul>
   <li *ngFor="let car of cars$ | async">
     {{ car.year }} {{ car.make }} {{ car.model }} (ID: {{ car.id }})
   </li>
 </ul>
+<p>
+  --//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--
+</p>
 
-<h3>Selected Car Details:</h3>
+<h6>Selected Car Details:</h6>
 <div *ngIf="selectedCar$ | async as car; else noCar">
-  <p>{{ car.year }} {{ car.make }} {{ car.model }} (ID: {{ car.id }})</p>
+  <div>
+    <div><strong> ID: </strong> {{ car.id }}</div>
+    <div><strong> Car Year: </strong> {{ car.year }}</div>
+    <div><strong> Car Make: </strong>{{ car.make }}</div>
+    <div><strong> Car Model: </strong>{{ car.model }}</div>
+  </div>
 </div>
 <ng-template #noCar>
   <p>No car selected.</p>
 </ng-template>
+<p></p>
+<p>
+  --//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--
+</p>
+
+<h6>Routing Information:</h6>
+<div style="width: 1000px">
+  <p><strong>Current Route:</strong> {{ currentRoute$ | async | json }}</p>
+
+  <p><strong>Fragment:</strong> {{ currentRouteFragment$ | async }}</p>
+  <p><strong>Query Params:</strong> {{ currentQueryParams$ | async | json }}</p>
+  <p><strong>Route Params:</strong> {{ currentRouteParams$ | async | json }}</p>
+  <p><strong>URL:</strong> {{ currentUrl$ | async }}</p>
+  <p><strong>Title:</strong> {{ currentTitle$ | async }}</p>
+</div>
+
+<a [routerLink]="[]" fragment="section1">Go to Section 1</a>
+<br />
+<h6 id="section1">Section 1</h6>
+<p>This is Section 1.</p>
