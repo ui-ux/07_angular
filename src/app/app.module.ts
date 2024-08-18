@@ -45,6 +45,9 @@ import { periodicElementReducer } from './ng-rx-main-periodic/store/reducers/per
 import { NgRxJsonComponent } from './ng-rx-json/ng-rx-json.component';
 import { UserEffects } from './ng-rx-json/effects/user.effects';
 import { userReducer } from './ng-rx-json/store/reducer/user.reducer';
+import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreModulePageComponent } from './store-module-page/store-module-page.component';
+import { reducer } from './store-module-page/reducer/car.reducer';
 
 
 
@@ -82,7 +85,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeComponent,
     NgRxMainComponent,
     NgRxPeriodicComponent,
-    NgRxJsonComponent
+    NgRxJsonComponent,
+    StoreModulePageComponent
   ],
   imports: [
     StoreModule.forRoot(
@@ -90,7 +94,10 @@ export function HttpLoaderFactory(http: HttpClient) {
         periodicElements: periodicElementReducer,
         article: ArticleReducer,
         users: userReducer,
+        router: routerReducer,
+        cars: reducer
       }),
+    StoreRouterConnectingModule.forRoot(),
     EffectsModule.forRoot([UserEffects]),
     BrowserModule,
     CommonModule,
