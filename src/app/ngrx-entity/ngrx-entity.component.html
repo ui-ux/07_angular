@@ -1,0 +1,98 @@
+<p>
+  <b>EntityState</b> - manages collections of entities using the ids array and
+  the entities object.
+</p>
+<p>
+  <b>EntityAdapter</b> - provides methods for CRUD operations on collections of
+  entities.
+</p>
+<p>
+  <b>EntityAdapter</b> - provides methods for CRUD operations on collections of
+  entities.
+</p>
+
+<div>
+  <div>Should be</div>
+  <div>
+    npm install ngrx/store ngrx/entity ngrx/effects ngrx/store-devtools --save
+    <!-- npm install @ngrx/store @ngrx/entity @ngrx/effects @ngrx/store-devtools
+    --save -->
+  </div>
+</div>
+
+<!-- Form for adding/updating users -->
+<div>
+  <h2>{{ isEditing ? "Edit User" : "Add User" }}</h2>
+  <form (ngSubmit)="isEditing ? updateUser() : addUser()">
+    <label class="mr-3">
+      Name:
+      <input
+        [(ngModel)]="currentUser.name"
+        name="name"
+        class="form-control"
+        required
+      />
+    </label>
+    <label class="mr-3">
+      Email:
+      <input
+        [(ngModel)]="currentUser.email"
+        name="email"
+        class="form-control"
+        required
+      />
+    </label>
+    <label class="mr-3">
+      Phone:
+      <input
+        [(ngModel)]="currentUser.phone"
+        name="phone"
+        class="form-control"
+        required
+      />
+    </label>
+    <button type="submit" class="btn btn-primary mr-3">
+      {{ isEditing ? "Update" : "Add" }}
+    </button>
+    <button type="button" (click)="clearForm()" class="btn btn-secondary">
+      Cancel
+    </button>
+  </form>
+</div>
+
+<div>
+  <div *ngIf="users$ | async as users; else loading">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>
+            <button (click)="selectUser(user.id)" class="btn btn-secondary">
+              Select
+            </button>
+            <button (click)="editUser(user)" class="btn btn-warning">
+              Edit
+            </button>
+            <button (click)="deleteUser(user.id)" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading users...</p>
+  </ng-template>
+</div>

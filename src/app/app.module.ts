@@ -48,6 +48,9 @@ import { userReducer } from './ng-rx-json/store/reducer/user.reducer';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModulePageComponent } from './store-module-page/store-module-page.component';
 import { reducer } from './store-module-page/reducer/car.reducer';
+import { NgrxEntityComponent } from './ngrx-entity/ngrx-entity.component';
+import { userReducer2 } from './ngrx-entity/store/reducers/user.reducer';
+import { UserEffects2 } from './ngrx-entity/store/effects/user.effects';
 
 
 
@@ -86,7 +89,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgRxMainComponent,
     NgRxPeriodicComponent,
     NgRxJsonComponent,
-    StoreModulePageComponent
+    StoreModulePageComponent,
+    NgrxEntityComponent,
   ],
   imports: [
     StoreModule.forRoot(
@@ -95,10 +99,15 @@ export function HttpLoaderFactory(http: HttpClient) {
         article: ArticleReducer,
         users: userReducer,
         router: routerReducer,
-        cars: reducer
+        cars: reducer,
+        users2: userReducer2
       }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([
+      UserEffects,
+      UserEffects2
+    ]),
+
     BrowserModule,
     CommonModule,
     RouterOutlet,

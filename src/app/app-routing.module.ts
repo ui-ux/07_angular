@@ -26,6 +26,7 @@ import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
 import { NgRxPeriodicComponent } from './ng-rx-main-periodic/ng-rx-periodic.component';
 import { NgRxJsonComponent } from './ng-rx-json/ng-rx-json.component';
 import { StoreModulePageComponent } from './store-module-page/store-module-page.component';
+import { NgrxEntityComponent } from './ngrx-entity/ngrx-entity.component';
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent},
@@ -63,10 +64,13 @@ const routes: Routes = [
         path: 'store-routing-page/:carId',
         component: StoreModulePageComponent,
         title: 'Store Routing Page',
-      }
+      },
+      { path: 'ngrx-entity', component: NgrxEntityComponent },
 
     ]
-   },
+  },
+
+
 
   { path: '**', component: PageNotFoundComponent },
 ];
