@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { NgForm } from '@angular/forms';
-import { AddArticleAction } from '../store/actions/article.actions';
-import { State } from '../store/state.model';
-import { Article } from '../store/models/article.model';
+import { AddArticleAction } from './store/actions/article.actions';
+import { State } from './store/state.model';
+import { Article } from './store/models/article.model';
 
 
 @Component({

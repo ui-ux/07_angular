@@ -34,7 +34,7 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { HomeComponent } from './home/home.component';
 import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
 import { StoreModule } from '@ngrx/store';
-import { ArticleReducer } from './store/reducers/course.reducer';
+import { ArticleReducer } from './ng-rx-main/store/reducers/course.reducer';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
