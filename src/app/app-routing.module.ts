@@ -27,6 +27,7 @@ import { NgRxPeriodicComponent } from './ng-rx-main-periodic/ng-rx-periodic.comp
 import { NgRxJsonComponent } from './ng-rx-json/ng-rx-json.component';
 import { StoreModulePageComponent } from './store-module-page/store-module-page.component';
 import { NgrxEntityComponent } from './ngrx-entity/ngrx-entity.component';
+import { UsersGuard } from './ng-rx-json/guards/users.guard';
 
 const routes: Routes = [
   { path: '', component: AuthenticationComponent},
@@ -59,7 +60,11 @@ const routes: Routes = [
       },
       { path: 'ngrx', component: NgRxMainComponent },
       { path: 'ngrx-periodic', component: NgRxPeriodicComponent },
-      { path: 'ngrx-json', component: NgRxJsonComponent },
+      {
+        path: 'ngrx-json',
+        component: NgRxJsonComponent,
+        canActivate: [UsersGuard],
+      },
       {
         path: 'store-routing-page/:carId',
         component: StoreModulePageComponent,

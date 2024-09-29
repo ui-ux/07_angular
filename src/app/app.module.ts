@@ -51,6 +51,8 @@ import { reducer } from './store-module-page/reducer/car.reducer';
 import { NgrxEntityComponent } from './ngrx-entity/ngrx-entity.component';
 import { userReducer2 } from './ngrx-entity/store/reducers/user.reducer';
 import { UserEffects2 } from './ngrx-entity/store/effects/user.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from './environment';
 
 
 
@@ -103,6 +105,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         users2: userReducer2
       }),
     StoreRouterConnectingModule.forRoot(),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      // Saves history for 25 actions
+      logOnly: environment.production,
+      // Only logging in production
+    }),
     EffectsModule.forRoot([
       UserEffects,
       UserEffects2
