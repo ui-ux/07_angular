@@ -1,0 +1,7 @@
+<h2>Send data from child to parent</h2>
+<child-output-parent
+  (newItemEvent)="handleNewItem($event)"
+  [title]="'test string'"
+></child-output-parent>
+
+<p aria-live="polite">Parent value: {{ receivedItem || 'Nothing received yet.' }}</p>

@@ -1,0 +1,35 @@
+<section class="page-card">
+  <h2>10. Async resource state (Angular 18 adaptation)</h2>
+  <p>
+    Angular's <code>resource()</code> API is not available in Angular 18. This example composes
+    Signals with RxJS to react to ID changes and cancel stale HTTP requests.
+  </p>
+  <pre>
+toObservable(postId).pipe(
+  switchMap(id => http.get(`/posts/$&#123;id&#125;`)),
+);
+postState = toSignal(states$, &#123; initialValue: loading &#125;);</pre>
+
+  <div class="demo">
+    <button type="button" (click)="loadPrevious()">Previous post</button>
+    <button type="button" (click)="loadNext()">Next post</button>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <p>Post ID: {{ postId() }}</p>
+    @if (postState(); as state) {
+      @switch (state.status) {
+        @case ('loading') {
+          <p>Loading post…</p>
+        }
+        @case ('success') {
+          <h3>{{ state.post.title }}</h3>
+          <p>{{ state.post.body }}</p>
+        }
+        @case ('error') {
+          <p role="alert">Could not load post: {{ state.message }}</p>
+        }
+      }
+    }
+  </div>
+</section>

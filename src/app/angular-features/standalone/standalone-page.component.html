@@ -1,0 +1,31 @@
+<section class="page-card">
+  <p class="eyebrow">Angular components</p>
+  <h1>Standalone components</h1>
+  <p>
+    Standalone components declare their own dependencies and can be imported directly by other
+    standalone components or lazy-loaded routes. They do not need to be declared in an NgModule.
+  </p>
+
+  <h2>Standalone component</h2>
+  <pre>
+&#64;Component(&#123;
+  selector: 'app-example',
+  standalone: true,
+  imports: [RouterLink],
+  template: '&lt;a routerLink="/"&gt;Home&lt;/a&gt;',
+&#125;)
+export class ExampleComponent &#123;&#125;</pre>
+
+  <h2>Lazy route</h2>
+  <pre>
+&#123;
+  path: 'example',
+  loadComponent: () => import('./example.component')
+    .then(module => module.ExampleComponent),
+&#125;</pre>
+
+  <div class="note">
+    This learning project still starts through its existing <code>AppModule</code>. These
+    standalone pages are loaded through the Router without changing the app's bootstrap strategy.
+  </div>
+</section>

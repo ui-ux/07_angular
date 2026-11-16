@@ -5,6 +5,7 @@ import { PasswordValidator } from './shared/password.validator';
 
 
 @Component({
+  standalone: false,
   selector: 'app-reactive-forms',
   templateUrl: './reactive-forms.component.html',
   styleUrl: './reactive-forms.component.scss'

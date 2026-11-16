@@ -1,0 +1,4 @@
+<h3>Child component inputs</h3>
+<p>Both inputs follow changes from the parent; the signal input can also be read as a signal.</p>
+<p>Regular <code>@Input()</code>: {{ legacyTitle?.name ?? 'No title provided' }}</p>
+<p>Signal <code>input()</code>: {{ title()?.name }}</p>

@@ -1,26 +1,30 @@
-<h3>client works!</h3>
-<!-- <table>
-  <tr *ngFor="let l of list">
-    <td>title</td>
-    <td>
-      {{ l.title }}
-    </td>
-  </tr>
-</table> -->
-
-<!-- <table>
-  <tr *ngFor="let l of list$ | async">
-    <td>title</td>
-    <td>
-      {{ l.title }}
-    </td>
-  </tr>
-</table> -->
-
-<table *ngIf="list$ | async as list">
-  <tr *ngFor="let l of list; let i = index">
-    <td>{{ i + 1 }}</td>
-    <td>title</td>
-    <td>{{ l.title }}</td>
-  </tr>
-</table>
+<h2>HttpClient і типізовані Observable</h2>
+@if (error; as errorMessage) {
+<p role="alert">{{ errorMessage }}</p>
+}
+@if (list$ | async; as list) {
+  @if (list.length) {
+  <table>
+    <caption>Пости, отримані з першої сторінки API</caption>
+    <thead>
+      <tr><th scope="col">№</th><th scope="col">Назва</th></tr>
+    </thead>
+    <tbody>
+      @for (post of list; track post.id; let i = $index) {
+      <tr>
+        <td>{{ i + 1 }}</td>
+        <td>{{ post.title }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  } @else {
+    @if (!error) {
+    <p>Пости відсутні.</p>
+    }
+  }
+} @else {
+  @if (!error) {
+  <p role="status">Завантаження постів…</p>
+  }
+}

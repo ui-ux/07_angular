@@ -1,0 +1,22 @@
+<section class="page-card">
+  <p class="eyebrow">Change detection</p>
+  <h1>Zoneless Angular</h1>
+  <p>
+    Zone.js traditionally patches asynchronous browser APIs and notifies Angular when to check
+    for changes. A zoneless application instead relies on explicit change notifications, such as
+    signal updates, bound events, and framework APIs.
+  </p>
+
+  <h2>Conceptual configuration</h2>
+  <pre>
+bootstrapApplication(AppComponent, &#123;
+  providers: [
+    provideExperimentalZonelessChangeDetection(),
+  ],
+&#125;);</pre>
+
+  <div class="note">
+    This page explains the concept only. The existing app uses <code>AppModule</code> and
+    Zone.js, so zoneless change detection is not enabled globally.
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<section class="page-card">
+  <h2>8. Signal inputs, outputs, and model</h2>
+  <p>Signal-based component APIs make inputs reactive and provide a concise two-way model.</p>
+  <pre>
+label = input('Standalone demo');
+selected = model(false);
+action = output&lt;string&gt;();</pre>
+
+  <div class="demo">
+    <button type="button" (click)="toggle()">Toggle model</button>
+    <button type="button" class="secondary" (click)="emitAction()">Emit output</button>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <p>input label: {{ label() }}</p>
+    <p>model selected: {{ selected() }}</p>
+    <p>output: {{ lastAction() }}</p>
+  </div>
+</section>

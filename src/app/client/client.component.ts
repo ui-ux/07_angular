@@ -1,28 +1,30 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
+import { Post } from '../000_models/post';
+import { ListService } from '../services/list.service';
 
 @Component({
+  standalone: false,
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrl: './client.component.scss'
+  styleUrl: './client.component.scss',
 })
 export class ClientComponent implements OnInit {
-  list$: Observable<any> | undefined;
-  list: any;
+  list$: Observable<Post[]> | undefined;
+  error: string | undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(private listService: ListService) {}
 
   ngOnInit(): void {
-    const params = new HttpParams()
-      .set("page", "1")
-      .set("pageSize", "10")
+    this.list$ = this.listService.loadList().pipe(
+      catchError(() => {
+        this.error = 'Не вдалося завантажити пости. Перевірте з’єднання з API.';
+        return of([]);
+      }),
+    );
+  }
 
-    // this.http.get('https://jsonplaceholder.typicode.com/posts', {params})
-    //   .subscribe(
-    //     list => this.list = list
-    // )
-
-    this.list$ = this.http.get('https://jsonplaceholder.typicode.com/posts', { params });
+  trackPostById(_index: number, post: Post): number {
+    return post.id;
   }
 }

@@ -1,0 +1,46 @@
+<section class="elements-model-view page-card" aria-label="Elements model view examples">
+  <p>
+    Звичайна властивість підходить для статичних даних. Signal повідомляє Angular про зміни, а
+    computed автоматично оновлює довжину імені.
+  </p>
+  <div class="table-container">
+    <table class="model-view-table">
+      <thead>
+        <tr>
+          <th scope="col">HTML</th>
+          <th scope="col">Rendered result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code ngNonBindable>{{ name }}</code>
+          </td>
+          <td>{{ name }}</td>
+        </tr>
+        <tr>
+          <td>
+            <code ngNonBindable>{{ person.name }}</code>
+          </td>
+          <td>{{ person.name }}</td>
+        </tr>
+        <tr>
+          <td>
+            <code ngNonBindable>{{ signalPerson().name }}; computed: signalPersonNameLength()</code>
+          </td>
+          <td>
+            <label>
+              Signal name
+              <input
+                type="text"
+                [ngModel]="signalPerson().name"
+                (ngModelChange)="updateSignalPersonName($event)"
+              />
+            </label>
+            <p>Name length updates automatically: {{ signalPersonNameLength() }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

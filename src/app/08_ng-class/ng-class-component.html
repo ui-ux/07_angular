@@ -1,0 +1,38 @@
+<h3>Classes via &#64;ngClass</h3>
+<p>You can pass a string, an array, an object, or a conditional expression.</p>
+<button type="button" (click)="toggleHighlight()">Toggle Highlight</button>
+
+<div>
+  <table>
+    <tr>
+      <th>html</th>
+      <th>result html</th>
+    </tr>
+    <tr>
+      <td ngNonBindable>[ngClass]="'bg-tomato'"</td>
+      <td [ngClass]="'bg-tomato'">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngClass]="['bg-tomato', 'color-white']"</td>
+      <td [ngClass]="['bg-tomato', 'color-white']">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngClass]=" &#123; 'bg-tomato': true, 'color-white': false &#125;"</td>
+      <td [ngClass]="{ 'bg-tomato': true, 'color-white': false }">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngClass]="true ? 'bg-tomato' : 'color-white'"</td>
+      <td [ngClass]="true ? 'bg-tomato' : 'color-white'">bg-tomato</td>
+    </tr>
+
+    <tr>
+      <td ngNonBindable>[ngClass]="highlighted ? ['bg-tomato', 'color-white'] : []"</td>
+      <td [ngClass]="highlighted ? ['bg-tomato', 'color-white'] : []">
+        Enter the text to toggle the classes.
+      </td>
+    </tr>
+  </table>
+</div>

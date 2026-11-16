@@ -61,7 +61,7 @@
 </div>
 
 <div>
-  <div *ngIf="users$ | async as users; else loading">
+  @if (users$ | async; as users) {
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -72,7 +72,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users">
+        @for (user of users; track user.id) {
+        <tr>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
           <td>{{ user.phone }}</td>
@@ -88,11 +89,10 @@
             </button>
           </td>
         </tr>
+        }
       </tbody>
     </table>
-  </div>
-
-  <ng-template #loading>
+  } @else {
     <p>Loading users...</p>
-  </ng-template>
+  }
 </div>

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NgrxEntityComponent } from './ngrx-entity.component';
+import { AppModule } from '../app.module';
 
 describe('NgrxEntityComponent', () => {
   let component: NgrxEntityComponent;
@@ -8,7 +8,7 @@ describe('NgrxEntityComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgrxEntityComponent]
+      imports: [AppModule]
     })
     .compileComponents();
 

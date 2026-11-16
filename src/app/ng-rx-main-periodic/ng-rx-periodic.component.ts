@@ -20,6 +20,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 @Component({
+  standalone: false,
   selector: 'app-ng-rx-periodic',
   templateUrl: './ng-rx-periodic.component.html',
   styleUrls: ['./ng-rx-periodic.component.scss'],
@@ -43,4 +44,3 @@ export class NgRxPeriodicComponent implements OnInit {
     this.store.dispatch(setFilter({ filter: filterValue }));
   }
 }
-

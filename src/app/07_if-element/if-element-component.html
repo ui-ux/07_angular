@@ -1,0 +1,20 @@
+<section class="page-card" aria-labelledby="if-example-title">
+  <h3 id="if-example-title">Conditional Display via &#64;if</h3>
+  <p>Select a status to see the corresponding template branch.</p>
+
+  <div class="actions" aria-label="Select a status">
+    <button type="button" (click)="status = 'ready'">Ready</button>
+    <button type="button" (click)="status = 'loading'">Loading</button>
+    <button type="button" (click)="status = 'empty'">Empty</button>
+  </div>
+
+  <p>Current status: <code>{{ status }}</code></p>
+
+  @if (status === 'ready') {
+  <p role="status">Data is ready for display.</p>
+  } @else if (status === 'loading') {
+  <p role="status">Loading data…</p>
+  } @else {
+  <p role="status">No data available.</p>
+  }
+</section>

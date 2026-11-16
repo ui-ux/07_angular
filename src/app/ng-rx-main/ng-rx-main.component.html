@@ -117,12 +117,11 @@
       </div>
       <div class="col-md-6">
         <ul class="list-group">
-          <li
-            class="list-group-item list-group-item-primary"
-            *ngFor="let article of articles$ | async"
-          >
+          @for (article of (articles$ | async); track article.id) {
+          <li class="list-group-item list-group-item-primary">
             <b>{{ article | json }}</b>
           </li>
+          }
         </ul>
       </div>
     </div>

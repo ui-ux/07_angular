@@ -1,0 +1,22 @@
+<section class="page-card">
+  <h2>1. Signal → Computed → Effect</h2>
+  <p>Один signal задає похідне значення, а effect реагує на його зміни.</p>
+  <pre>
+count = signal(0);
+doubleCount = computed(() => count() * 2);
+
+effect(() => &#123;
+  console.log(count(), doubleCount());
+&#125;);</pre>
+
+  <div class="demo">
+    <button type="button" (click)="increment()">Increment</button>
+    <button type="button" class="secondary" (click)="reset()">Reset</button>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <p>count: {{ count() }}</p>
+    <p>doubleCount: {{ doubleCount() }}</p>
+    <p>Effect output: logged when either signal changes (open the browser console).</p>
+  </div>
+</section>

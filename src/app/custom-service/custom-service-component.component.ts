@@ -1,59 +1,86 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, of } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Post } from '../000_models/post';
 import { ListService } from '../services/list.service';
 
 @Component({
+  standalone: false,
   selector: 'app-custom-service',
   templateUrl: './custom-service-component.component.html',
-  styleUrls: ['./custom-service-component.component.scss']
+  styleUrls: ['./custom-service-component.component.scss'],
 })
 export class CustomServiceComponent implements OnInit {
-  posts$: Observable<any[]> | undefined;
-  list: any[] = [];
+  posts$: Observable<Post[]> | undefined;
   id: number | undefined;
-  dataById: any | undefined;
+  dataById: Post | undefined;
   error: string | undefined;
+  statusMessage: string | undefined;
+  private readonly destroyRef = inject(DestroyRef);
 
   constructor(private listService: ListService) {}
 
   ngOnInit(): void {
-    this.posts$ = this.listService.loadList();
-    this.posts$.subscribe(posts => {
-      this.list = posts;
-    });
+    this.posts$ = this.listService.loadList().pipe(
+      catchError((error: unknown) => {
+        this.error = this.getErrorMessage(error);
+        return of([]);
+      }),
+    );
   }
 
-  save(item: any): void {
-    this.listService.updateTitle(item.id, item.title)
+  save(post: Post): void {
+    this.statusMessage = undefined;
+    this.listService
+      .updateTitle(post.id, post.title)
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: response => console.log('Data updated successfully:', response),
-        error: error => console.error('An error occurred while updating:', error)
+        next: () => (this.statusMessage = `Пост ${post.id} оновлено.`),
+        error: (error: unknown) => (this.error = this.getErrorMessage(error)),
       });
   }
 
-  saveAll(list: any[]): void {
-    this.listService.updateAllTitleg(list)
+  saveAll(posts: Post[]): void {
+    this.statusMessage = undefined;
+    this.listService
+      .updateAllTitles(posts)
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: response => console.log('Data updated successfully:', response),
-        error: error => console.error('An error occurred while updating:', error)
+        next: () => (this.statusMessage = `${posts.length} постів оновлено.`),
+        error: (error: unknown) => (this.error = this.getErrorMessage(error)),
       });
   }
 
   getDataById(): void {
-    if (this.id) {
-      this.listService.getDataById(this.id)
+    this.error = undefined;
+    this.statusMessage = undefined;
+    this.dataById = undefined;
+
+    if (this.id !== undefined && Number.isInteger(this.id) && this.id >= 1 && this.id <= 100) {
+      this.listService
+        .getDataById(this.id)
+        .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
-          next: data => {
+          next: (data) => {
             this.dataById = data;
-            this.error = undefined;
           },
-          error: error => {
-            console.error('An error occurred while fetching data:', error);
-            this.error = 'Error fetching data. Please try again.';
-          }
+          error: (error: unknown) => (this.error = this.getErrorMessage(error)),
         });
     } else {
-      this.error = 'Please provide an ID.';
+      this.error = 'Введіть ціле число від 1 до 100.';
     }
+  }
+
+  private getErrorMessage(error: unknown): string {
+    if (error instanceof HttpErrorResponse && error.status === 0) {
+      return 'Не вдалося з’єднатися з API. Перевірте мережу та спробуйте ще раз.';
+    }
+
+    return 'Запит не виконано. Спробуйте ще раз.';
+  }
+
+  trackPostById(_index: number, post: Post): number {
+    return post.id;
   }
 }

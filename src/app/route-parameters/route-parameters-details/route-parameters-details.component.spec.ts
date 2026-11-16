@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RouteParametersDetailsComponent } from './route-parameters-details.component';
+import { AppModule } from '../../app.module';
 
 describe('RouteParametersDetailsComponent', () => {
   let component: RouteParametersDetailsComponent;
@@ -8,7 +8,7 @@ describe('RouteParametersDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouteParametersDetailsComponent]
+      imports: [AppModule]
     })
     .compileComponents();
     

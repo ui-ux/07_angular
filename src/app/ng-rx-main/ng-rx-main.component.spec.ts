@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NgRxMainComponent } from './ng-rx-main.component';
+import { AppModule } from '../app.module';
 
 describe('NgRxMainComponent', () => {
   let component: NgRxMainComponent;
@@ -8,7 +8,7 @@ describe('NgRxMainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NgRxMainComponent]
+      imports: [AppModule]
     })
     .compileComponents();
     

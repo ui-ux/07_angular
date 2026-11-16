@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
+  standalone: false,
   selector: 'app-page-not-found',
   templateUrl: './page-not-found.component.html',
   styleUrl: './page-not-found.component.scss'

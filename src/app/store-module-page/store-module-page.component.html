@@ -1,17 +1,22 @@
 <p>store-module-page works!</p>
 
 <h6>All Cars:</h6>
+@if (cars$ | async; as cars) {
 <ul>
-  <li *ngFor="let car of cars$ | async">
+  @for (car of cars; track car.id) {
+  <li>
     {{ car.year }} {{ car.make }} {{ car.model }} (ID: {{ car.id }})
   </li>
+  }
 </ul>
+}
 <p>
   --//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--
 </p>
 
 <h6>Selected Car Details:</h6>
-<div *ngIf="selectedCar$ | async as car; else noCar">
+@if (selectedCar$ | async; as car) {
+<div>
   <div>
     <div><strong> ID: </strong> {{ car.id }}</div>
     <div><strong> Car Year: </strong> {{ car.year }}</div>
@@ -19,9 +24,9 @@
     <div><strong> Car Model: </strong>{{ car.model }}</div>
   </div>
 </div>
-<ng-template #noCar>
+} @else {
   <p>No car selected.</p>
-</ng-template>
+}
 <p></p>
 <p>
   --//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--

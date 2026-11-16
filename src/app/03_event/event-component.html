@@ -1,0 +1,46 @@
+<section class="page-card" aria-labelledby="event-title">
+  <h1 id="event-title">Events: standard property and signal</h1>
+  <p>Обидва приклади обробляють ті самі події. У signal-прикладі derived значення оновлюються автоматично.</p>
+
+  <article class="event-example" aria-labelledby="standard-title">
+    <h2 id="standard-title">1. Standard property</h2>
+    <p>Person name: <strong>{{ standardName }}</strong></p>
+
+    <label for="standard-name">Edit name and press Enter</label>
+    <input
+      #standardInput
+      id="standard-name"
+      type="text"
+      [value]="standardName"
+      (input)="onStandardInput($event)"
+      (keyup.enter)="onStandardEnter(standardInput.value)"
+    />
+
+    <div class="actions">
+      <button type="button" (click)="onStandardClick()">Click</button>
+      <p class="event-message" aria-live="polite">{{ standardMessage }}</p>
+    </div>
+  </article>
+
+  <article class="event-example" aria-labelledby="signal-title">
+    <h2 id="signal-title">2. Signal</h2>
+    <p>Person name: <strong>{{ signalName() }}</strong></p>
+    <p>Name length: {{ signalNameLength() }}</p>
+    <p>Name status: {{ signalNameStatus() }}</p>
+
+    <label for="signal-name">Edit name and press Enter</label>
+    <input
+      #signalInput
+      id="signal-name"
+      type="text"
+      [value]="signalName()"
+      (input)="onSignalInput(signalInput.value)"
+      (keyup.enter)="onSignalEnter(signalInput.value)"
+    />
+
+    <div class="actions">
+      <button type="button" (click)="onSignalClick()">Click</button>
+      <p class="event-message" aria-live="polite">{{ signalMessage() }}</p>
+    </div>
+  </article>
+</section>

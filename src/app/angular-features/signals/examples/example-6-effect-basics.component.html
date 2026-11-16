@@ -1,0 +1,22 @@
+<section class="page-card">
+  <h2>6. effect() basics</h2>
+  <p>
+    An effect runs when a signal read inside it changes. Use effects for synchronizing with
+    imperative APIs; derive values with <code>computed()</code> instead.
+  </p>
+  <pre>
+effect(() => &#123;
+  console.log('Count changed:', count());
+&#125;);</pre>
+
+  <div class="demo">
+    <button type="button" (click)="increment()">Increment</button>
+    <button type="button" (click)="toggleTheme()">Toggle theme side effect</button>
+  </div>
+
+  <div class="result">
+    <p>count: {{ count() }}</p>
+    <p>theme signal: {{ theme() }}</p>
+    <p>Count changes are also logged in the browser console.</p>
+  </div>
+</section>

@@ -1,19 +1,28 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
+  standalone: false,
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
   styleUrl: './authentication.component.scss'
 })
 export class AuthenticationComponent {
-  username: string = '';
-  password: string = '';
+  username: string = 'user@test99.com';
+  password: string = 'passwordTest99';
   loginFailed: boolean = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+  ) { }
 
-  onSubmit() {
-    this.loginFailed = !this.authService.login(this.username, this.password);
+  onSubmit(): void {
+    this.loginFailed = !this.authService.login(
+      this.username,
+      this.password,
+      this.route.snapshot.queryParamMap.get('returnUrl'),
+    );
   }
 }

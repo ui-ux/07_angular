@@ -7,6 +7,7 @@ import { Article } from './store/models/article.model';
 import { addArticle } from './store/actions/article.actions';
 
 @Component({
+  standalone: false,
   selector: 'app-ng-rx-main',
   templateUrl: './ng-rx-main.component.html',
   styleUrl: './ng-rx-main.component.scss',

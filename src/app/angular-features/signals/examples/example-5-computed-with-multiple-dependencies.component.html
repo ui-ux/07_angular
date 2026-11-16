@@ -1,0 +1,25 @@
+<section class="page-card">
+  <h2>5. computed() with multiple dependencies</h2>
+  <p>Computed signal може одночасно залежати від кількох signal-ів і оновлювати похідне значення.</p>
+  <pre>
+price = signal(100);
+quantity = signal(2);
+discount = signal(0.1);
+totalPrice = computed(() => price() * quantity() * (1 - discount()));</pre>
+
+  <div class="demo">
+    <button type="button" (click)="increasePrice()">+ price</button>
+    <button type="button" (click)="decreasePrice()">- price</button>
+    <button type="button" (click)="increaseQuantity()">+ quantity</button>
+    <button type="button" (click)="decreaseQuantity()">- quantity</button>
+    <button type="button" (click)="toggleDiscount()">Toggle discount</button>
+    <button type="button" class="secondary" (click)="reset()">Reset</button>
+  </div>
+
+  <div class="result">
+    <p>price: {{ price() }}</p>
+    <p>quantity: {{ quantity() }}</p>
+    <p>discount: {{ discount() }}</p>
+    <p>totalPrice: {{ totalPrice() }}</p>
+  </div>
+</section>

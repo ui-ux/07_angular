@@ -1,0 +1,24 @@
+<h3>Кілька гілок через &#64;switch</h3>
+<h4>Кілька варіантів за числовим значенням</h4>
+@switch (testCount) { @case (1) {
+<p>Значення 1: {{ testCount }}</p>
+} @case (5) {
+<p>Значення 5: {{ testCount }}</p>
+} @default {
+<p>Немає відповідного значення.</p>
+} }
+
+<h4>Оберіть значення, щоб змінити вміст</h4>
+@for (option of abc; track option) {
+<button type="button" (click)="onClickSwitch(option)">{{ option }}</button>
+} @switch (current) { @case ('uno') {
+<p>Ви обрали uno.</p>
+} @case ('dos') {
+<p>Ви обрали dos.</p>
+} @case ('tress') {
+<p>Ви обрали tress.</p>
+} @case ('cuatro') {
+<p>Ви обрали cuatro.</p>
+} @default {
+<p>Оберіть один із варіантів.</p>
+} }

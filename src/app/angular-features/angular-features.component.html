@@ -1,0 +1,29 @@
+<div class="page">
+  <aside class="sidebar">
+    <h2>Angular features</h2>
+    <nav class="main-nav" aria-label="Angular feature examples">
+      <div class="nav-group">
+        <a routerLink="signals/example1" routerLinkActive="active">Signals</a>
+        <div class="signals-submenu">
+          <p class="submenu-title">Browse Signals examples and compare them with RxJS.</p>
+          <a routerLink="signals/example1" routerLinkActive="active">1. Signal → Computed → Effect</a>
+          <a routerLink="signals/example2" routerLinkActive="active">2. set() vs update()</a>
+          <a routerLink="signals/example3" routerLinkActive="active">3. Primitive, object and array signals</a>
+          <a routerLink="signals/example4" routerLinkActive="active">4. computed() for derived state</a>
+          <a routerLink="signals/example5" routerLinkActive="active">5. computed() with multiple dependencies</a>
+          <a routerLink="signals/example6" routerLinkActive="active">6. effect() basics</a>
+          <a routerLink="signals/example7" routerLinkActive="active">7. RxJS comparison</a>
+          <a routerLink="signals/example8" routerLinkActive="active">8. input() / output() / model()</a>
+          <a routerLink="signals/example9" routerLinkActive="active">9. untracked()</a>
+          <a routerLink="signals/example10" routerLinkActive="active">10. Async resource state</a>
+        </div>
+      </div>
+      <a routerLink="standalone" routerLinkActive="active">Standalone</a>
+      <a routerLink="zoneless" routerLinkActive="active">Zoneless</a>
+    </nav>
+  </aside>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

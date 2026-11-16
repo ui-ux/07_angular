@@ -12,12 +12,11 @@ export class AuthGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean | UrlTree {
-    if (this.authService.isLoggedIn()) {
-      return true;
-    } else {
-      return this.router.parseUrl('/');
-    }
+    return this.authService.isLoggedIn()
+      ? true
+      : this.router.createUrlTree(['/login'], {
+        queryParams: { returnUrl: state.url },
+      });
   }
 }
-
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
+  standalone: false,
   selector: 'app-route-parameters-details',
   templateUrl: './route-parameters-details.component.html',
   styleUrl: './route-parameters-details.component.scss'

@@ -1,0 +1,24 @@
+<section class="page-card">
+  <h2>4. computed() for derived state</h2>
+  <p>
+    Computed signal доступний лише для читання та перераховується, коли змінюються залежності.
+    Він допомагає не дублювати похідні дані у змінному стані.
+  </p>
+  <pre>
+firstName = signal('Demo');
+lastName = signal('User');
+fullName = computed(() => firstName() + ' ' + lastName());
+initials = computed(() => firstName()[0] + lastName()[0]);</pre>
+
+  <div class="demo">
+    <button type="button" (click)="updateName()">Toggle first name</button>
+    <button type="button" (click)="updateLastName()">Toggle last name</button>
+  </div>
+
+  <div class="result">
+    <p>firstName: {{ firstName() }}</p>
+    <p>lastName: {{ lastName() }}</p>
+    <p>fullName: {{ fullName() }}</p>
+    <p>initials: {{ initials() }}</p>
+  </div>
+</section>

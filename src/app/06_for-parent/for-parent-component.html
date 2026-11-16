@@ -1,0 +1,18 @@
+<h3>Списковий рендеринг через &#64;for</h3>
+<p>Звичайного масиву достатньо для списку. Тут signal зберігає змінюваний список, а <code>track item.id</code> допомагає повторно використати елементи.</p>
+<button type="button" (click)="addItem()">Додати елемент</button>
+
+@for (item of testData(); track item.id; let index = $index) {
+<section>
+  <p>{{ index + 1 }}. {{ item.name }} (id: {{ item.id }})</p>
+</section>
+} @empty {
+<p>Список порожній.</p>
+}
+
+<h3>Порожній список через &#64;empty</h3>
+@for (item of emptyData(); track item.id) {
+<p>{{ item.name }}</p>
+} @empty {
+<p>Немає даних для показу.</p>
+}

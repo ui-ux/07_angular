@@ -6,6 +6,7 @@ import * as fromUserSelectors from './store/selectors/user.selectors';
 import { User } from './models/user.model';
 
 @Component({
+  standalone: false,
   selector: 'app-ngrx-entity',
   templateUrl: './ngrx-entity.component.html',
   styleUrls: ['./ngrx-entity.component.scss']

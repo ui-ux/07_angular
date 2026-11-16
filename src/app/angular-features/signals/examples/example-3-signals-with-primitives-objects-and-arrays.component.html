@@ -1,0 +1,30 @@
+<section class="page-card">
+  <h2>3. Signals with primitives, objects, and arrays</h2>
+  <p>
+    A signal може зберігати примітив, об’єкт чи масив. Для об’єктів і масивів створюйте нове
+    посилання, а не змінюйте попереднє на місці.
+  </p>
+  <pre>
+count = signal(0);
+name = signal('Demo');
+isActive = signal(true);
+user = signal(&#123; name: 'Demo', age: 30 &#125;);
+tags = signal(['angular', 'signals']);</pre>
+
+  <div class="demo">
+    <button type="button" (click)="incrementCount()">+ count</button>
+    <button type="button" (click)="renameUser()">Change name</button>
+    <button type="button" (click)="toggleStatus()">Toggle active</button>
+    <button type="button" (click)="updateUser()">Update user</button>
+    <button type="button" (click)="addTag()">Add tag</button>
+    <button type="button" (click)="reset()">Reset</button>
+  </div>
+
+  <div class="result" aria-live="polite">
+    <p>count: {{ count() }}</p>
+    <p>name: {{ name() }}</p>
+    <p>isActive: {{ isActive() }}</p>
+    <p>user: {{ user().name }} / {{ user().age }}</p>
+    <p>tags: {{ tags().join(' | ') || 'empty' }}</p>
+  </div>
+</section>

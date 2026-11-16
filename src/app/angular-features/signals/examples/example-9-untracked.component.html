@@ -1,0 +1,22 @@
+<section class="page-card">
+  <h2>9. untracked()</h2>
+  <p>
+    Read a signal without making it a dependency of the current reactive context. Changing
+    <code>theme</code> alone will not rerun this effect.
+  </p>
+  <pre>
+effect(() => &#123;
+  console.log(count(), untracked(theme));
+&#125;);</pre>
+
+  <div class="demo">
+    <button type="button" (click)="increment()">Increment count</button>
+    <button type="button" class="secondary" (click)="toggleTheme()">Toggle theme</button>
+  </div>
+
+  <div class="result">
+    <p>count: {{ count() }}</p>
+    <p>theme: {{ theme() }}</p>
+    <p>Check the browser console: only count changes trigger the effect.</p>
+  </div>
+</section>

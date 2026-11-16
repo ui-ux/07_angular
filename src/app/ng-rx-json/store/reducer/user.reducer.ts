@@ -8,16 +8,19 @@ export const userReducer = createReducer(
   on(loadUsers, state => ({
     ...state,
     loading: true,
+    loaded: false,
     error: null,
   })),
   on(loadUsersSuccess, (state, { users }) => ({
     ...state,
     users,
     loading: false,
+    loaded: true,
   })),
   on(loadUsersFailure, (state, { error }) => ({
     ...state,
     loading: false,
+    loaded: true,
     error,
   }))
 );

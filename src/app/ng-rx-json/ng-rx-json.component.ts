@@ -6,6 +6,7 @@ import { selectAllUsers, selectUsersError, selectUsersLoading } from './store/se
 import { User } from './store/models/user.model';
 
 @Component({
+  standalone: false,
   selector: 'app-ng-rx-json',
   templateUrl: './ng-rx-json.component.html',
   styleUrls: ['./ng-rx-json.component.scss']

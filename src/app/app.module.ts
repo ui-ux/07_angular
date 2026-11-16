@@ -5,18 +5,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ElementsModelViewComponent } from './elements-model-view/elements-model-view.component';
-import { InputDecoratorComponent } from './input-decorator/input-decorator.component';
-import { ChildInputDecoratorComponent } from './input-decorator/child-input-decorator/child-input-decorator.component';
-import { OutputParentComponent } from './output-parent/output-parent.component';
-import { ChildOutputParentComponent } from './output-parent/child-output-parent/child-output-parent.component';
-import { ForParentComponent } from './for-parent/for-parent.component';
-import { ChildForComponent } from './for-parent/child-for/child-for.component';
-import { IfElementComponent } from './if-element/if-elementcomponent';
-import { NgClassComponent } from './ng-class/ng-class.component';
-import { NgStyleComponent } from './ng-style/ng-style.component';
-import { SwitchComponent } from './switch/switch.component';
-import { PipesComponent } from './pipes/pipes.component';
 import { ClientComponent } from './client/client.component';
 import { CustomServiceComponent } from './custom-service/custom-service-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,7 +17,12 @@ import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-t
 import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
 import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
@@ -53,30 +46,16 @@ import { userReducer2 } from './ngrx-entity/store/reducers/user.reducer';
 import { UserEffects2 } from './ngrx-entity/store/effects/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './environment';
-
-
+import { ApiUrlInterceptor } from './services/api-url.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    ElementsModelViewComponent,
-    ChildInputDecoratorComponent,
-    InputDecoratorComponent,
-    OutputParentComponent,
-    ChildOutputParentComponent,
-    ForParentComponent,
-    ChildForComponent,
-    IfElementComponent,
-    NgClassComponent,
-    NgStyleComponent,
-    SwitchComponent,
-    PipesComponent,
     ClientComponent,
     CustomServiceComponent,
     TemplateDirectiveFormsComponent,
@@ -95,26 +74,20 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgrxEntityComponent,
   ],
   imports: [
-    StoreModule.forRoot(
-      {
-        periodicElements: periodicElementReducer,
-        article: ArticleReducer,
-        users: userReducer,
-        router: routerReducer,
-        cars: reducer,
-        users2: userReducer2
-      }),
+    StoreModule.forRoot({
+      periodicElements: periodicElementReducer,
+      article: ArticleReducer,
+      users: userReducer,
+      router: routerReducer,
+      cars: reducer,
+      users2: userReducer2,
+    }),
     StoreRouterConnectingModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      // Saves history for 25 actions
       logOnly: environment.production,
-      // Only logging in production
     }),
-    EffectsModule.forRoot([
-      UserEffects,
-      UserEffects2
-    ]),
+    EffectsModule.forRoot([UserEffects, UserEffects2]),
 
     BrowserModule,
     CommonModule,
@@ -129,11 +102,15 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }),
   ],
-  providers: [HttpClient, provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()],
-  bootstrap: [AppComponent]
+  providers: [
+    provideHttpClient(withInterceptorsFromDi()),
+    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
+    provideAnimationsAsync(),
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

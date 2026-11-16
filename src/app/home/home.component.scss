@@ -1,4 +1,36 @@
 .main {
-  display: flex;
-  padding: 14px;
+  display: grid;
+  grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
+  gap: 1.5rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  align-items: start;
+}
+
+.main > router-outlet {
+  display: none;
+}
+
+.home-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem 0;
+}
+
+.home-container h2 {
+  margin: 0.75rem 0 0;
+  text-align: left;
+}
+
+@media (max-width: 850px) {
+  .main {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .home-container {
+    padding: 1rem 1rem 0;
+  }
 }

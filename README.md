@@ -1,31 +1,58 @@
-# AngularApp
+# Angular learning app
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+Навчальний проєкт на Angular 21. Кожен розділ у навігації показує окрему можливість Angular; компоненти організовано за навчальними темами.
 
-## Development server
+## Запуск
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Потрібні Node.js 20.19+, 22.12+ або 24+ та npm.
 
-## Code scaffolding
+У корені проєкту:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```powershell
+npm ci
+npm start
+```
 
-## Build
+Застосунок відкривається за адресою `http://localhost:4200/`. Для production-збірки виконайте `npm run build`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Unit-тести працюють на Vitest через вбудований Angular CLI builder. Запустіть їх командою `npm test`.
 
-## Running unit tests
+Якщо інсталяція залежностей завершується помилкою мережі, перевірте доступ до npm registry і налаштування проксі/VPN; помилка підключення не виправляється змінами Angular-коду.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Що демонструє проєкт
 
-## Running end-to-end tests
+| Розділ | Приклади |
+|---|---|
+| `elements-model-view`, `event` | Компоненти, шаблони, прив’язка даних та обробка подій |
+| `input-decorator`, `output-parent`, `for-parent` | Обмін даними між батьківськими й дочірніми компонентами |
+| `if-element`, `ng-class`, `ng-style`, `switch`, `pipes` | Умовний та списковий рендеринг, атрибути й pipes |
+| `template-directive-forms`, `reactive-forms` | Два підходи до форм і базова валідація |
+| `client`, `custom-service` | HttpClient, сервіси, типізовані Observable, стани завантаження й помилок |
+| `route-parameters` | Параметри URL і вкладені маршрути |
+| `ngrx`, `ngrx-periodic`, `ngrx-json`, `ngrx-entity`, `store-routing-page` | Store, reducers, actions, selectors, effects, entity та router-store |
+| `concepts` | Lazy loading, resolver, `CanDeactivate`, lifecycle hooks, `ViewChild`, content projection, власна директива й pipe, Signals, `OnPush`, async/cross-field валідація та `FormArray` |
+| `angular-features` | Окремий lazy-loaded блок із 10 Signals прикладами, Standalone components і поясненням Zoneless; async resource використовує RxJS і `toSignal` |
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Структура та навігація
 
-## Further help
+- `src/main.ts` запускає застосунок через `AppModule` (NgModule-підхід).
+- `src/app/app.routes.ts` містить єдину конфігурацію маршрутів; `AppRoutingModule` передає її в Router.
+- Основні навчальні розділи завантажуються в оболонці `HomeComponent`; `concepts` підключений як lazy-loaded feature module.
+- `angular-features` доступний з навігації як окремий lazy-loaded блок із власними дочірніми маршрутами; standalone-компоненти маршрутизуються без зміни запуску через `AppModule`.
+- Загальні компоненти розміщені у відповідних тематичних папках. Спільні HTTP-модель і сервіси — у `src/app/models` та `src/app/services`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+У `angular-features/signals/example10` демонстрація асинхронного стану використовує `HttpClient`, `toObservable`, `switchMap` та `toSignal`. Зміна ID скасовує попередній HTTP-запит; завантаження, помилки та успішна відповідь показуються окремо. Zoneless-сторінка пояснює підхід, але не вимикає Zone.js у застосунку.
 
-i18n
-npm install @ngx-translate/core --save
-npm install @ngx-translate/http-loader --save
+## HTTP та API
+
+`ListService` повертає типізований `Post`, а `ApiUrlInterceptor` перетворює внутрішні URL виду `/api/...` на адресу з `environment.apiUrl`. Параметри `_page` і `_limit` використовуються для сторінкового API JSONPlaceholder.
+
+JSONPlaceholder — демонстраційний сервіс: запити на оновлення повертають приклад відповіді, але не зберігають зміни як справжній backend. Для власного API змініть `apiUrl` у `src/app/environment.ts`.
+
+## Автентифікація
+
+Поточний `AuthService` — лише навчальна імітація: перевірка облікових даних виконується у браузері, а token зберігається в `localStorage`. Це не захищає реальні сторінки чи дані. У production потрібні backend-перевірка, безпечне керування сесією та відповідні серверні правила доступу. Не використовуйте демонстраційні значення як справжні облікові дані.
+
+## Інтернаціоналізація та стилі
+
+Переклади розміщені в `src/assets/i18n`. Загальні стилі — у `src/styles.scss`, стилі окремих прикладів — поруч із компонентами. Angular Material уже налаштований у проєкті; для нових прикладів додаткових UI-залежностей не потрібно.

@@ -8,6 +8,7 @@ import { appInit } from './actions/car.actions';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
+  standalone: false,
   selector: 'app-store-module-page',
   templateUrl: './store-module-page.component.html',
   styleUrls: ['./store-module-page.component.scss']
@@ -62,4 +63,3 @@ export class StoreModulePageComponent implements OnInit {
     // this.currentTitle$ = this.store.select(selectCurrentTitle);
   }
 }
-

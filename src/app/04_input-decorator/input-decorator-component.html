@@ -1,0 +1,29 @@
+<h2>Regular input and signal input</h2>
+<p>A regular input is read as a value; a signal input is read with <code>title()</code>.</p>
+<div>
+  <table>
+    <tr>
+      <th>html</th>
+      <th>result html</th>
+    </tr>
+    <tr>
+      <td ngNonBindable>{{ testData1.name }}</td>
+      <td>{{ testData1.name }}</td>
+    </tr>
+    <tr>
+      <td ngNonBindable>{{ testData2.name }}</td>
+      <td>{{ testData2.name }}</td>
+    </tr>
+    <tr>
+      <td ngNonBindable>{{ testData3.name }}</td>
+      <td>{{ testData3.name }}</td>
+    </tr>
+  </table>
+</div>
+<p>
+  <button type="button" (click)="changeSignalTitle()">Change signal input</button>
+  <child-input-decorator
+    [legacyTitle]="testData1"
+    [title]="signalTitle()"
+  ></child-input-decorator>
+</p>

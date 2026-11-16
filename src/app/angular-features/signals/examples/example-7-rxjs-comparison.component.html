@@ -1,0 +1,22 @@
+<section class="page-card">
+  <h2>7. Signals and RxJS</h2>
+  <p>
+    Signals represent synchronous reactive state. RxJS Observables model streams over time and
+    provide operators for asynchronous composition.
+  </p>
+  <pre>
+count = signal(0);
+count.update(value => value + 1);
+
+count$ = interval(1000).pipe(scan(value => value + 1, 0));</pre>
+
+  <div class="demo">
+    <button type="button" (click)="incrementSignal()">Increment signal</button>
+    <button type="button" class="secondary" (click)="resetSignal()">Reset signal</button>
+  </div>
+
+  <div class="result">
+    <p>Signal count: {{ signalCount() }}</p>
+    <p>Observable interval count: {{ observableCount$ | async }}</p>
+  </div>
+</section>

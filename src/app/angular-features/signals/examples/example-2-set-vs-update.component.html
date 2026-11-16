@@ -1,0 +1,23 @@
+<section class="page-card">
+  <h2>2. set() vs update()</h2>
+  <p>
+    Використовуйте <code>set()</code>, щоб замінити значення, і <code>update()</code>, щоб
+    обчислити його з попереднього значення.
+  </p>
+  <pre>
+count = signal(0);
+
+count.set(10);
+count.update(value => value + 1);</pre>
+
+  <div class="demo">
+    <button type="button" (click)="setValue()">set()</button>
+    <button type="button" (click)="updateValue()">update()</button>
+    <button type="button" class="secondary" (click)="reset()">Reset</button>
+  </div>
+
+  <div class="result">
+    <p>count: {{ count() }}</p>
+    <p>message: {{ message() }}</p>
+  </div>
+</section>
