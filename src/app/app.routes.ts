@@ -13,8 +13,10 @@ import { SwitchComponent } from './10_switch/switch-component';
 import { PipesComponent } from './11_pipes/pipes-component';
 import { ClientComponent } from './client/client.component';
 import { CustomServiceComponent } from './custom-service/custom-service-component.component';
-import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
-import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { TemplateDirectiveFormsComponent } from './12_reactive-forms/12_1_template-driven-forms/template-driven-forms.component';
+import { ReactiveFormsComponent } from './12_reactive-forms/12_2_reactive-forms/reactive-forms.component';
+import { ReactiveValidationComponent } from './12_reactive-forms/12_3_reactive-validation/reactive-validation.component';
+import { ReactiveStructureComponent } from './12_reactive-forms/12_4_reactive-structure/reactive-structure.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouteParametersComponent } from './route-parameters/route-parameters.component';
 import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
@@ -50,7 +52,10 @@ export const routes: Routes = [
       { path: 'client', component: ClientComponent },
       { path: 'custom-service', component: CustomServiceComponent },
       { path: 'template-directive-forms', component: TemplateDirectiveFormsComponent },
+      { path: 'template-driven-forms', component: TemplateDirectiveFormsComponent },
       { path: 'reactive-forms', component: ReactiveFormsComponent },
+      { path: 'reactive-validation', component: ReactiveValidationComponent },
+      { path: 'reactive-structure', component: ReactiveStructureComponent },
       { path: 'route-parameters', component: RouteParametersComponent, pathMatch: 'full' },
       {
         path: 'route-parameters/:id',

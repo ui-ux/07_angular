@@ -1,0 +1,50 @@
+<section class="page-card">
+  <p class="eyebrow">12_4 · Form groups and arrays</p>
+  <h2>Nested groups and dynamic controls</h2>
+  <p>
+    Use a nested <code>FormGroup</code> for related fields and a
+    <code>FormArray</code> when the number of controls changes at runtime.
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <fieldset formGroupName="address">
+      <legend>Address</legend>
+      <div class="form-group">
+        <label for="address-city">City</label>
+        <input id="address-city" formControlName="city" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="address-state">State / region</label>
+        <input id="address-state" formControlName="state" type="text" />
+      </div>
+      <div class="form-group">
+        <label for="address-postal-code">Postal code</label>
+        <input id="address-postal-code" formControlName="postalCode" type="text" />
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Alternate emails</legend>
+      <div formArrayName="alternateEmails">
+        @for (control of alternateEmails.controls; track control; let i = $index) {
+          <div class="form-group">
+            <label [for]="'alternate-email-' + i">Email {{ i + 1 }}</label>
+            <input [id]="'alternate-email-' + i" [formControlName]="i" type="email" />
+            <button type="button" (click)="removeAlternateEmail(i)">Remove</button>
+          </div>
+        }
+      </div>
+      <button type="button" (click)="addAlternateEmail()">Add email</button>
+    </fieldset>
+
+    <button type="button" (click)="loadExample()">Load example address</button>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="result" aria-live="polite">
+    <p>Current value: {{ form.value | json }}</p>
+    @if (submittedValue) {
+      <p>Submitted value: {{ submittedValue | json }}</p>
+    }
+  </div>
+</section>

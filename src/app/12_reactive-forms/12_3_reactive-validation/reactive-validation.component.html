@@ -1,0 +1,64 @@
+<section class="page-card">
+  <p class="eyebrow">Reactive validation</p>
+  <h2>Built-in, custom, and cross-field validation</h2>
+  <p>
+    Reactive forms support built-in validators, custom control validators, and group validators that
+    compare more than one field.
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label for="validated-user-name">Username</label>
+      <input id="validated-user-name" formControlName="userName" type="text" />
+      @if (userNameRequiredError) {
+        <small class="error" role="alert">Username is required.</small>
+      } @else if (userNameMinLengthError) {
+        <small class="error" role="alert">Use at least 3 characters.</small>
+      } @else if (userNameForbiddenError) {
+        <small class="error" role="alert">The username "admin" is not allowed.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="validated-password">Password</label>
+      <input id="validated-password" formControlName="password" type="password" />
+      @if (passwordHasVisibleError) {
+        <small class="error" role="alert">Password must contain at least 8 characters.</small>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="validated-confirm-password">Confirm password</label>
+      <input id="validated-confirm-password" formControlName="confirmPassword" type="password" />
+      @if (confirmPasswordHasVisibleError) {
+        <small class="error" role="alert">Confirm your password.</small>
+      } @else if (passwordMismatchVisible) {
+        <small class="error" role="alert">Passwords do not match.</small>
+      }
+    </div>
+
+    <div class="form-check">
+      <input id="validated-subscribe" formControlName="subscribe" type="checkbox" />
+      <label for="validated-subscribe">Send me email updates</label>
+    </div>
+
+    @if (form.controls.subscribe.value) {
+      <div class="form-group">
+        <label for="validated-email">Email</label>
+        <input id="validated-email" formControlName="email" type="email" />
+        @if (emailHasVisibleError) {
+          <small class="error" role="alert">Enter a valid email address.</small>
+        }
+      </div>
+    }
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="result" aria-live="polite">
+    <p>Form status: {{ form.status }}</p>
+    @if (submittedValue) {
+      <p>Submitted value: {{ submittedValue | json }}</p>
+    }
+  </div>
+</section>

@@ -1,8 +1,8 @@
 export class User {
   constructor(
     public name: string,
-    public  email: string,
-    public phone: number,
+    public email: string,
+    public phone: string,
     public language: string,
     public radio: string,
     public check: boolean

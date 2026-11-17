@@ -8,8 +8,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ClientComponent } from './client/client.component';
 import { CustomServiceComponent } from './custom-service/custom-service-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { TemplateDirectiveFormsComponent } from './template-directive-forms/template-directive-forms.component';
-import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { RouteParametersComponent } from './route-parameters/route-parameters.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
@@ -58,8 +56,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     NavigationComponent,
     ClientComponent,
     CustomServiceComponent,
-    TemplateDirectiveFormsComponent,
-    ReactiveFormsComponent,
     PageNotFoundComponent,
     RouteParametersComponent,
     RouteParametersDetailsComponent,
