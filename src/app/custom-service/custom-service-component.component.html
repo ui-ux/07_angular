@@ -1,46 +1,13 @@
-<h3>custom-service component</h3>
-<label for="post-id">ID поста (1–100)</label>
-<input id="post-id" type="number" min="1" max="100" step="1" [(ngModel)]="id" class="form-control mb-2">
-<button type="button" (click)="getDataById()" class="btn btn-primary mb-2">
-  Отримати пост
-</button>
-@if (error; as errorMessage) {
-<div class="alert alert-danger" role="alert">
-  {{ errorMessage }}
-</div>
-}
-@if (statusMessage; as message) {
-<p role="status">{{ message }}</p>
-}
-
-@if (dataById; as post) {
-<div>
-  <p><strong>ID:</strong> {{ post.id }}</p>
-  <p><strong>Назва:</strong> {{ post.title }}</p>
-  <p><strong>Текст:</strong> {{ post.body }}</p>
-</div>
-}
-
-<div class="py-3">
-  <hr />
-</div>
-
-@if (posts$ | async; as posts) {
-  <button type="button" (click)="saveAll(posts)" class="btn btn-primary mb-2">
-    Оновити всі
-  </button>
-  <table class="table table-bordered">
-    <caption>Редагування постів через сервіс</caption>
-    <thead><tr><th scope="col">ID</th><th scope="col">Назва</th><th scope="col">Дія</th></tr></thead>
-    <tbody>
-      @for (post of posts; track post.id) {
-      <tr>
-        <td>{{ post.id }}</td>
-        <td><label [for]="'post-title-' + post.id">Назва поста {{ post.id }}</label>
-          <input [id]="'post-title-' + post.id" [(ngModel)]="post.title" class="form-control"></td>
-        <td><button type="button" (click)="save(post)" class="btn btn-primary">Оновити</button></td>
-      </tr>
-      }
-    </tbody>
-  </table>
-}
+<section class="page-card">
+  <p class="eyebrow">HttpClient examples</p>
+  <h2>Service examples, one concept at a time</h2>
+  <p>Each example has its own service and focused page.</p>
+  <ol>
+    <li><a routerLink="/home/client">GET a posts collection</a></li>
+    <li><a routerLink="/home/client-paged">GET with query parameters</a></li>
+    <li><a routerLink="/home/client-update-title">PUT one title</a></li>
+    <li><a routerLink="/home/client-update-all-titles">PUT several titles with forkJoin</a></li>
+    <li><a routerLink="/home/client-delete-post">DELETE one post</a></li>
+    <li><a routerLink="/home/client-post-by-id">GET one post by ID</a></li>
+  </ol>
+</section>

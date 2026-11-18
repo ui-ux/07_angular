@@ -1,0 +1,30 @@
+<section class="page-card">
+  <p class="eyebrow">HttpClient __ GET by ID</p>
+  <h2>Load one post</h2>
+  <p>The service requests a single resource at <code>/api/posts/:id</code>.</p>
+
+  <form (ngSubmit)="loadPost()">
+    <div>
+      <div>
+        <label for="lookup-post-id">Post ID</label>
+      </div>
+      <div>
+        <input id="lookup-post-id" name="id" type="number" min="1" step="1" [(ngModel)]="id" />
+      </div>
+    </div>
+    <button class="my-2" type="submit" [disabled]="loading">Load post</button>
+  </form>
+
+  @if (error; as message) {
+    <p role="alert">{{ message }}</p>
+  }
+  @if (loading) {
+    <p role="status">Loading post…</p>
+  }
+  @if (post; as loadedPost) {
+    <article>
+      <h3>{{ loadedPost.title }}</h3>
+      <p>{{ loadedPost.body }}</p>
+    </article>
+  }
+</section>

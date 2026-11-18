@@ -1,0 +1,30 @@
+<section class="page-card">
+  <p class="eyebrow">HttpClient __ PUT</p>
+  <h2>Update one post title</h2>
+  <p>The request sends a title object to <code>/api/posts/:id</code>.</p>
+
+  <form (ngSubmit)="updateTitle()">
+    <div>
+      <label for="update-post-id">Post ID</label>
+    </div>
+    <div class="mb-2">
+      <input id="update-post-id" name="id" type="number" min="1" step="1" [(ngModel)]="id" />
+    </div>
+    <div>
+      <label for="update-post-title">New title</label>
+    </div>
+    <div class="mb-2">
+      <input id="update-post-title" name="title" type="text" [(ngModel)]="title" />
+    </div>
+    <div>
+      <button type="submit" [disabled]="saving">Update title</button>
+    </div>
+  </form>
+
+  @if (error; as message) {
+    <p role="alert">{{ message }}</p>
+  }
+  @if (updatedPost; as post) {
+    <p role="status">Updated post {{ post.id }}: {{ post.title }}</p>
+  }
+</section>

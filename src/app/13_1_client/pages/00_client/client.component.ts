@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
-import { Post } from '../000_models/post';
-import { ListService } from '../services/list.service';
+import { Post } from '../../../000_models/post';
+import { GetPostsService } from '../../00_services/00_get-posts/get-posts.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
-  standalone: false,
   selector: 'app-client',
   templateUrl: './client.component.html',
-  styleUrl: './client.component.scss',
+  imports: [AsyncPipe],
 })
 export class ClientComponent implements OnInit {
   list$: Observable<Post[]> | undefined;
   error: string | undefined;
 
-  constructor(private listService: ListService) {}
+  constructor(private getPostsService: GetPostsService) {}
 
   ngOnInit(): void {
-    this.list$ = this.listService.loadList().pipe(
+    this.list$ = this.getPostsService.getPosts().pipe(
       catchError(() => {
-        this.error = 'Не вдалося завантажити пости. Перевірте з’єднання з API.';
+        this.error = 'Failed to load posts. Please check your API connection.';
         return of([]);
       }),
     );

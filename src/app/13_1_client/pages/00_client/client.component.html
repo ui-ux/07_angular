@@ -1,0 +1,35 @@
+<h2>HttpClient and Typed Observables</h2>
+@if (error; as errorMessage) {
+  <p role="alert">{{ errorMessage }}</p>
+}
+@if (list$ | async; as list) {
+  @if (list.length) {
+    <table>
+      <caption>
+        Posts retrieved from the first page of the API
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">№</th>
+          <th scope="col">Title</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (post of list; track post.id; let i = $index) {
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{ post.title }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  } @else {
+    @if (!error) {
+      <p>No posts available.</p>
+    }
+  }
+} @else {
+  @if (!error) {
+    <p role="status">Loading posts…</p>
+  }
+}

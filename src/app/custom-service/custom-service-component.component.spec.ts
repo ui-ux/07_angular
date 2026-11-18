@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { CustomServiceComponent } from './custom-service-component.component';
-import { AppModule } from '../app.module';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 describe('CustomServiceComponent', () => {
   let component: CustomServiceComponent;
@@ -8,9 +9,9 @@ describe('CustomServiceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule]
-    })
-    .compileComponents();
+      imports: [CustomServiceComponent],
+      providers: [provideRouter([])],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CustomServiceComponent);
     component = fixture.componentInstance;

@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { AuthGuard } from './services/auth.guard';
+import { AuthGuard } from './13_0_services/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { ElementsModelViewComponent } from './02_elements-model-view/elements-model-view-component';
 import { EventComponent } from './03_event/event-component';
@@ -11,7 +11,12 @@ import { NgClassComponent } from './08_ng-class/ng-class-component';
 import { NgStyleComponent } from './09_ng-style/ng-style-component';
 import { SwitchComponent } from './10_switch/switch-component';
 import { PipesComponent } from './11_pipes/pipes-component';
-import { ClientComponent } from './client/client.component';
+import { ClientComponent } from './13_1_client/pages/00_client/client.component';
+import { PagedListComponent } from './13_1_client/pages/01_paged-list/paged-list.component';
+import { UpdateTitleComponent } from './13_1_client/pages/03_update-title/update-title.component';
+import { UpdateAllTitlesComponent } from './13_1_client/pages/04_update-all-titles/update-all-titles.component';
+import { PostByIdComponent } from './13_1_client/pages/02_post-by-id/post-by-id.component';
+import { DeletePostComponent } from './13_1_client/pages/05_delete-post/delete-post.component';
 import { CustomServiceComponent } from './custom-service/custom-service-component.component';
 import { TemplateDirectiveFormsComponent } from './12_reactive-forms/12_1_template-driven-forms/template-driven-forms.component';
 import { ReactiveFormsComponent } from './12_reactive-forms/12_2_reactive-forms/reactive-forms.component';
@@ -50,6 +55,11 @@ export const routes: Routes = [
       { path: 'switch', component: SwitchComponent },
       { path: 'pipes', component: PipesComponent },
       { path: 'client', component: ClientComponent },
+      { path: 'client-paged', component: PagedListComponent },
+      { path: 'client-update-title', component: UpdateTitleComponent },
+      { path: 'client-update-all-titles', component: UpdateAllTitlesComponent },
+      { path: 'client-post-by-id', component: PostByIdComponent },
+      { path: 'client-delete-post', component: DeletePostComponent },
       { path: 'custom-service', component: CustomServiceComponent },
       { path: 'template-directive-forms', component: TemplateDirectiveFormsComponent },
       { path: 'template-driven-forms', component: TemplateDirectiveFormsComponent },

@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
-import { ClientComponent } from './client/client.component';
-import { CustomServiceComponent } from './custom-service/custom-service-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteParametersComponent } from './route-parameters/route-parameters.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -15,12 +13,7 @@ import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-t
 import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import {
-  HTTP_INTERCEPTORS,
-  HttpClient,
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
+import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
 import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
@@ -44,7 +37,6 @@ import { userReducer2 } from './ngrx-entity/store/reducers/user.reducer';
 import { UserEffects2 } from './ngrx-entity/store/effects/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './environment';
-import { ApiUrlInterceptor } from './services/api-url.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,8 +46,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     NavigationComponent,
-    ClientComponent,
-    CustomServiceComponent,
     PageNotFoundComponent,
     RouteParametersComponent,
     RouteParametersDetailsComponent,
@@ -102,11 +92,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [
-    provideHttpClient(withInterceptorsFromDi()),
-    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
-    provideAnimationsAsync(),
-  ],
+  providers: [provideHttpClient(), provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

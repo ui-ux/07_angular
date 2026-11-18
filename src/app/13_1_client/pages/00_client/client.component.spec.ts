@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClientComponent } from './client.component';
-import { AppModule } from '../app.module';
+import { of } from 'rxjs';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { GetPostsService } from '../../00_services/00_get-posts/get-posts.service';
 
 describe('ClientComponent', () => {
   let component: ClientComponent;
@@ -8,10 +10,10 @@ describe('ClientComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule]
-    })
-    .compileComponents();
-    
+      imports: [ClientComponent],
+      providers: [{ provide: GetPostsService, useValue: { getPosts: () => of([]) } }],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(ClientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,0 +1,48 @@
+<section class="page-card">
+  <p class="eyebrow">HttpClient __ GET + HttpParams</p>
+  <h2>Load a page of posts</h2>
+  <p>The service builds query parameters and requests only the selected page.</p>
+
+  <form (ngSubmit)="loadPage()">
+    <div>
+      <label for="posts-page">Page</label>
+    </div>
+    <div class="mb-2">
+      <input id="posts-page" name="page" type="number" min="1" step="1" [(ngModel)]="page" />
+    </div>
+    <div>
+      <label for="posts-page-size">Page size</label>
+    </div>
+    <div class="mb-2">
+      <input
+        id="posts-page-size"
+        name="pageSize"
+        type="number"
+        min="1"
+        step="1"
+        [(ngModel)]="pageSize"
+      />
+    </div>
+    <div class="my-2">
+      <button type="submit">Load page</button>
+    </div>
+  </form>
+
+  @if (error; as message) {
+    <p role="alert">{{ message }}</p>
+  }
+  @if (loading) {
+    <p role="status">Loading posts…</p>
+  }
+  @if (posts; as loadedPosts) {
+    @if (loadedPosts.length) {
+      <ul>
+        @for (post of loadedPosts; track post.id) {
+          <li>{{ post.id }} — {{ post.title }}</li>
+        }
+      </ul>
+    } @else {
+      <p>No posts on this page.</p>
+    }
+  }
+</section>

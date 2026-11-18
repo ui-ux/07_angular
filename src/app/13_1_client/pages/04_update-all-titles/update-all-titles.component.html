@@ -1,0 +1,34 @@
+<section class="page-card">
+  <p class="eyebrow">HttpClient __ PUT + RxJS forkJoin</p>
+  <h2>Update several post titles</h2>
+  <p>
+    Edit the titles, then submit. <code>map</code> creates one PUT request per post and
+    <code>forkJoin</code> emits when every request completes.
+  </p>
+
+  @if (loading) {
+    <p role="status">Loading posts…</p>
+  }
+  @if (error; as message) {
+    <p role="alert">{{ message }}</p>
+  }
+  @if (posts; as loadedPosts) {
+    <form (ngSubmit)="updateAllTitles()">
+      @for (post of loadedPosts; track post.id) {
+        <div class="mb-3">
+          <label [for]="'bulk-title-' + post.id" class="mr-2">Post {{ post.id }}</label>
+          <input
+            [id]="'bulk-title-' + post.id"
+            [name]="'title-' + post.id"
+            type="text"
+            [(ngModel)]="post.title"
+          />
+        </div>
+      }
+      <button type="submit" [disabled]="saving">Update all titles</button>
+    </form>
+  }
+  @if (statusMessage; as message) {
+    <p role="status">{{ message }}</p>
+  }
+</section>

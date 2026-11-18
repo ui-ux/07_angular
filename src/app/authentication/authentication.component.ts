@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../13_0_services/auth.service';
 
 @Component({
   standalone: false,
   selector: 'app-authentication',
   templateUrl: './authentication.component.html',
-  styleUrl: './authentication.component.scss'
+  styleUrl: './authentication.component.scss',
 })
 export class AuthenticationComponent {
   username: string = 'user@test99.com';
@@ -16,7 +16,7 @@ export class AuthenticationComponent {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-  ) { }
+  ) {}
 
   onSubmit(): void {
     this.loginFailed = !this.authService.login(

@@ -1,0 +1,24 @@
+<section class="page-card">
+  <p class="eyebrow">HttpClient __ DELETE</p>
+  <h2>Delete one post</h2>
+  <p>The service sends a DELETE request to <code>/posts/:id</code>.</p>
+
+  <form (ngSubmit)="deletePost()">
+    <div>
+      <label for="delete-post-id">Post ID</label>
+    </div>
+    <div class="mb-2">
+      <input id="delete-post-id" name="id" type="number" min="1" step="1" [(ngModel)]="id" />
+    </div>
+    <div>
+      <button type="submit" [disabled]="deleting">Delete post</button>
+    </div>
+  </form>
+
+  @if (error; as message) {
+    <p role="alert">{{ message }}</p>
+  }
+  @if (statusMessage; as message) {
+    <p role="status">{{ message }}</p>
+  }
+</section>
