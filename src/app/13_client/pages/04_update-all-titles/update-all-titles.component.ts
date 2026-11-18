@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Post } from '../../../000_models/post';
-import { GetPostsService } from '../../00_services/00_get-posts/get-posts.service';
-import { UpdateAllPostTitlesService } from '../../00_services/04_update-all-post-titles/update-all-post-titles.service';
+import { GetPostsService } from '../../services/00_get-posts/get-posts.service';
+import { UpdateAllPostTitlesService } from '../../services/04_update-all-post-titles/update-all-post-titles.service';
 
 @Component({
   selector: 'app-update-all-titles',

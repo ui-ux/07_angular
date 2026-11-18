@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Post } from '../../../000_models/post';
-import { GetPostByIdService } from '../../00_services/02_get-post-by-id/get-post-by-id.service';
+import { GetPostByIdService } from '../../services/02_get-post-by-id/get-post-by-id.service';
 
 @Component({
   selector: 'app-post-by-id',

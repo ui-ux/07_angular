@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Post } from '../../../000_models/post';
-import { UpdatePostTitleService } from '../../00_services/03_update-post-title/update-post-title.service';
+import { UpdatePostTitleService } from '../../services/03_update-post-title/update-post-title.service';
 
 @Component({
   selector: 'app-update-title',

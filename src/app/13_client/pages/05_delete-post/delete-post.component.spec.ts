@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { of, throwError } from 'rxjs';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { DeletePostService } from '../../00_services/05_delete-post/delete-post.service';
+import { DeletePostService } from '../../services/05_delete-post/delete-post.service';
 import { DeletePostComponent } from './delete-post.component';
 
 describe('DeletePostComponent', () => {

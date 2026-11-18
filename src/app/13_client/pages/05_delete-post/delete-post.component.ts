@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DeletePostService } from '../../00_services/05_delete-post/delete-post.service';
+import { DeletePostService } from '../../services/05_delete-post/delete-post.service';
 
 @Component({
   selector: 'app-delete-post',

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Post } from '../../../000_models/post';
-import { GetPagedPostsService } from '../../00_services/01_get-paged-posts/get-paged-posts.service';
+import { GetPagedPostsService } from '../../services/01_get-paged-posts/get-paged-posts.service';
 
 @Component({
   selector: 'app-paged-list',

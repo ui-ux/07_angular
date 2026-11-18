@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, catchError, of } from 'rxjs';
 import { Post } from '../../../000_models/post';
-import { GetPostsService } from '../../00_services/00_get-posts/get-posts.service';
+import { GetPostsService } from '../../services/00_get-posts/get-posts.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
