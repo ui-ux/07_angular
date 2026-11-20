@@ -1,0 +1,17 @@
+<article class="card">
+  <header>
+    <ng-content select="[card-title]">
+      <h3>Default card title</h3>
+    </ng-content>
+  </header>
+
+  <div class="card-content">
+    <ng-content>
+      <p>No content provided.</p>
+    </ng-content>
+  </div>
+
+  <footer>
+    <ng-content select="[card-actions]" />
+  </footer>
+</article>

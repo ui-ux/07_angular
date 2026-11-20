@@ -1,0 +1,29 @@
+<section class="page-card">
+  <p class="eyebrow">Content projection</p>
+  <h2>Content projection with ng-content</h2>
+
+  <p>
+    The parent component provides content, while the child component decides where each part should
+    be displayed.
+  </p>
+  <p>
+    <app-projection-card />
+  </p>
+  <p>
+    <app-projection-card>
+      <h3 card-title>User profile</h3>
+      <div class="profile-content">
+        <p><strong>Name:</strong> Jane Smith</p>
+        <p><strong>Email:</strong> jane.smith@example.com</p>
+        <p><strong>Role:</strong> User</p>
+      </div>
+    </app-projection-card>
+  </p>
+
+  <app-projection-card>
+    <div card-actions>
+      <button type="button">Edit profile</button>
+      <button type="button">View details</button>
+    </div>
+  </app-projection-card>
+</section>

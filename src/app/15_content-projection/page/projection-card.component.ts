@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  standalone: true,
   selector: 'app-projection-card',
-  templateUrl: './projection-card.component.html',
+  templateUrl: './projection-card-component.html',
+  styleUrl: './projection-card-component.scss',
 })
 export class ProjectionCardComponent {}

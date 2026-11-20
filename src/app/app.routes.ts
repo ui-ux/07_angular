@@ -19,7 +19,7 @@ import { PostByIdComponent } from './13_client/pages/02_post-by-id/post-by-id.co
 import { DeletePostComponent } from './13_client/pages/05_delete-post/delete-post.component';
 import { CustomServiceComponent } from './13_1_custom-service/custom-service-component.component';
 import { DirectivesComponent } from './14_directives/component/directives.component';
-import { ContentProjectionComponent } from './15_content-projection/content-projection.component';
+
 import { UnsavedChangesComponent } from './16_can-deactivate/unsaved-changes.component';
 import { UnsavedChangesGuard } from './16_can-deactivate/unsaved-changes.guard';
 import { TemplateDirectiveFormsComponent } from './12_reactive-forms/12_1_template-driven-forms/template-driven-forms.component';
@@ -38,6 +38,7 @@ import { UsersGuard } from './ng-rx-json/guards/users.guard';
 import { StoreModulePageComponent } from './store-module-page/store-module-page.component';
 import { NgrxEntityComponent } from './ngrx-entity/ngrx-entity.component';
 import { InputDecoratorComponent } from './04_input-decorator/input-decorator-component';
+import { ContentProjectionComponent } from './15_content-projection/component/content-projection-component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
