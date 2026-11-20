@@ -1,0 +1,16 @@
+<section class="page-card">
+  <p class="eyebrow">16 · CanDeactivate guard</p>
+  <h2>Protect a draft from accidental navigation</h2>
+  <p>Edit the draft, then try to navigate away. Save it to leave without a confirmation.</p>
+
+  <label for="draft">Draft</label>
+  <textarea id="draft" name="draft" rows="5" [(ngModel)]="draft"></textarea>
+  <button type="button" (click)="saveChanges()">Save draft</button>
+
+  @if (hasUnsavedChanges) {
+    <p role="status">You have unsaved changes.</p>
+  }
+  @if (statusMessage; as message) {
+    <p role="status">{{ message }}</p>
+  }
+</section>

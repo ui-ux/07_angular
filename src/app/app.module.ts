@@ -4,10 +4,8 @@ import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { NavigationComponent } from './navigation/navigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteParametersComponent } from './route-parameters/route-parameters.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
 import { ChildTestTwoComponent } from './route-parameters/child-test-two/child-test-two.component';
 import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
@@ -15,7 +13,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { HomeComponent } from './home/home.component';
 import { NgRxMainComponent } from './ng-rx-main/ng-rx-main.component';
 import { StoreModule } from '@ngrx/store';
 import { ArticleReducer } from './ng-rx-main/store/reducers/course.reducer';
@@ -45,14 +42,11 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
-    PageNotFoundComponent,
     RouteParametersComponent,
     RouteParametersDetailsComponent,
     ChildTestOneComponent,
     ChildTestTwoComponent,
     AuthenticationComponent,
-    HomeComponent,
     NgRxMainComponent,
     NgRxPeriodicComponent,
     NgRxJsonComponent,

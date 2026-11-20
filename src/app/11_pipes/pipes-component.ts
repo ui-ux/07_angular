@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { InitialsPipe } from './initials.pipe';
 
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes-component.html',
-  imports: [CommonModule],
+  imports: [CommonModule, InitialsPipe],
 })
 export class PipesComponent {
   readonly date = new Date();

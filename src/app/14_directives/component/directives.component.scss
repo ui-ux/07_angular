@@ -1,0 +1,24 @@
+.directive-examples {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  button,
+  p {
+    padding: 12px 20px;
+    border: 2px solid #2563eb;
+    border-radius: 8px;
+    background-color: #2563eb;
+    color: #fff;
+    font-size: 15px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  p {
+    margin: 0;
+  }
+}

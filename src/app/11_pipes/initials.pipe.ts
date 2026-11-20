@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  standalone: false,
   name: 'initials',
+  standalone: true,
   pure: true,
 })
 export class InitialsPipe implements PipeTransform {
@@ -12,7 +12,7 @@ export class InitialsPipe implements PipeTransform {
       .split(/\s+/)
       .filter(Boolean)
       .slice(0, 2)
-      .map(part => part.charAt(0).toUpperCase())
+      .map((part) => part.charAt(0).toUpperCase())
       .join('');
   }
 }

@@ -29,7 +29,9 @@ ul.navigation {
     font-size: 0.9rem;
     font-weight: 500;
     text-align: left;
-    transition: background-color 150ms ease, color 150ms ease;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease;
 
     &:hover:not(:disabled),
     &:focus-visible {

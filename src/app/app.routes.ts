@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { AuthGuard } from './13_client/guards/auth.guard';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './00_home/home.component';
 import { ElementsModelViewComponent } from './02_elements-model-view/elements-model-view-component';
 import { EventComponent } from './03_event/event-component';
 import { OutputParentComponent } from './05_output-parent/output-parent-component';
@@ -17,12 +17,16 @@ import { UpdateTitleComponent } from './13_client/pages/03_update-title/update-t
 import { UpdateAllTitlesComponent } from './13_client/pages/04_update-all-titles/update-all-titles.component';
 import { PostByIdComponent } from './13_client/pages/02_post-by-id/post-by-id.component';
 import { DeletePostComponent } from './13_client/pages/05_delete-post/delete-post.component';
-import { CustomServiceComponent } from './custom-service/custom-service-component.component';
+import { CustomServiceComponent } from './13_1_custom-service/custom-service-component.component';
+import { DirectivesComponent } from './14_directives/component/directives.component';
+import { ContentProjectionComponent } from './15_content-projection/content-projection.component';
+import { UnsavedChangesComponent } from './16_can-deactivate/unsaved-changes.component';
+import { UnsavedChangesGuard } from './16_can-deactivate/unsaved-changes.guard';
 import { TemplateDirectiveFormsComponent } from './12_reactive-forms/12_1_template-driven-forms/template-driven-forms.component';
 import { ReactiveFormsComponent } from './12_reactive-forms/12_2_reactive-forms/reactive-forms.component';
 import { ReactiveValidationComponent } from './12_reactive-forms/12_3_reactive-validation/reactive-validation.component';
 import { ReactiveStructureComponent } from './12_reactive-forms/12_4_reactive-structure/reactive-structure.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './01_page-not-found/page-not-found.component';
 import { RouteParametersComponent } from './route-parameters/route-parameters.component';
 import { RouteParametersDetailsComponent } from './route-parameters/route-parameters-details/route-parameters-details.component';
 import { ChildTestOneComponent } from './route-parameters/child-test-one/child-test-one.component';
@@ -60,6 +64,13 @@ export const routes: Routes = [
       { path: 'client-update-all-titles', component: UpdateAllTitlesComponent },
       { path: 'client-post-by-id', component: PostByIdComponent },
       { path: 'client-delete-post', component: DeletePostComponent },
+      { path: 'directives', component: DirectivesComponent },
+      { path: 'content-projection', component: ContentProjectionComponent },
+      {
+        path: 'unsaved-changes',
+        component: UnsavedChangesComponent,
+        canDeactivate: [UnsavedChangesGuard],
+      },
       { path: 'custom-service', component: CustomServiceComponent },
       { path: 'template-directive-forms', component: TemplateDirectiveFormsComponent },
       { path: 'template-driven-forms', component: TemplateDirectiveFormsComponent },
@@ -84,13 +95,6 @@ export const routes: Routes = [
         title: 'Store Routing Page',
       },
       { path: 'ngrx-entity', component: NgrxEntityComponent },
-      {
-        path: 'concepts',
-        loadChildren: () =>
-          import('./angular-concepts/angular-concepts.module').then(
-            (module) => module.AngularConceptsModule,
-          ),
-      },
       {
         path: 'angular-features',
         loadChildren: () =>
